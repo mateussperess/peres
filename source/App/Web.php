@@ -29,6 +29,20 @@ class Web
             "home",
             []);
     }
+    
+    public function imoveis() : void
+    {
+        echo $this->view->render(
+            "imoveis",
+            []);
+    }
+
+    public function anunciar() : void
+    {
+        echo $this->view->render(
+            "anunciar",
+            []);
+    }
 
     public function about() : void
     {

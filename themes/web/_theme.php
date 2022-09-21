@@ -11,15 +11,17 @@
 <body>
   <nav>
     <div class="menu-links">
-      <a href="#"> Ofertas </a>
+      <a href="<?= url("anunciar")?>"> Anunciar </a>
     </div>
 
     <div class="menu-links">
-      <a href="#"> Imóveis </a>
+      <a href="<?= url("imoveis")?>"> Imóveis </a>
     </div>
 
     <div class="menu-logo">
-      <img src="<?= url("assets/web/images/img/logos/6.png") ?>" alt="">
+      <a href="<?= url("home")?>">
+        <img src="<?= url("assets/web/images/img/logos/6.png") ?>" alt="logo">
+      </a>
     </div>
 
     <div class="menu-links">

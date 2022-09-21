@@ -66,21 +66,52 @@ nav div {
 /*CONTAINER*/
 
 .container {
-  margin-top: 18rem;
   height: 50rem;
   color: white;
+  background-color: #038BBB;
   font-size: 3rem;
 }
 
-.content {
+/*404*/
+
+.content-error {
+  padding-block: 17rem;
   text-align: center;
   align-items: center;
 }
 
-.content span:first-child {
+.content-error span:first-child {
   font-size: 9rem;
 }
 
+
+
+/*ANNOUNCE*/
+
+.content-announce {
+  height: 50rem;
+  color: white;
+  background-color: #038BBB;
+  font-size: 3rem;
+}
+
+/*PROPERTIES*/
+
+.content-properties {
+  height: 50rem;
+  color: white;
+  background-color: #038BBB;
+  font-size: 3rem;
+}
+
+/*ABOUT*/
+
+.content-about {
+  height: 50rem;
+  color: white;
+  background-color: #038BBB;
+  font-size: 3rem;
+}
 /*CONTAINER*/
 
 /* .container {

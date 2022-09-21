@@ -15,9 +15,12 @@ $route = new Router(CONF_URL_BASE, ":");
 $route->namespace("Source\App");
 $route->get("/","Web:home");
 $route->get("/sobre","Web:about");
+$route->get("/imoveis", "Web:imoveis");
+$route->get("/anunciar", "Web:anunciar");
+
 //$route->get("/projeto","Web:project");
-$route->get("/contato","Web:contact");
-$route->post("/contato","Web:contact");
+// $route->get("/contato","Web:contact");
+// $route->post("/contato","Web:contact");
 
 $route->get("/cadastrar","Web:register");
 $route->post("/cadastrar","Web:register");

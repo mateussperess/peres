@@ -1,0 +1,29 @@
+{
+    "name": "mateussperess/peres",
+    "description": "Atividade final da disciplina de LPWII",
+    "minimum-stability": "stable",
+    "authors": [
+      {
+        "name": "Mateus Peres",
+        "email": "mateuslopes.ch577@adacemico.ifsul.edu.br",
+        "role": "Developer"
+      }
+    ],
+    "config": {
+      "vendor-dir": "vendor"
+    },
+    "autoload": {
+      "psr-4": {
+        "Source\\": "source/"
+      },
+      "files": [
+        "source/Boot/Config.php",
+        "source/Boot/Helpers.php"
+      ]
+    },
+    "require": {
+      "dompdf/dompdf": "^2.0",
+      "coffeecode/router": "1.0.8",
+      "league/plates": "v3.4.0"
+    }
+  }

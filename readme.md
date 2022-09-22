@@ -1,18 +1,17 @@
-## Estrutura básica para MVC
-> Aqui temos uma estrutura de arquivos para o desenvolvimento de uma aplicação Web seguindo o padrão de desenvolvimento de software MVC.
-A aplicação se divide em três partes:
-- Área pública (acesso para todos que tiverem o endereço);
-- Aplicação do usuário (acesso restrito ao usuário, autenticação por e-mail e senha);
-- Área administrativa do site (somente o(s) administrador(es) do site/sistema acessam, autenticação também é feita por email e senha)
-> Os acessos são feitos pelas seguintes uri:
-- /
-- /sobre
-- /app
-- /app/lista
-- /app/pdf
-- /admin
-### Módulos externos instalados via Composer
-> Não esqueçam de rodar o “composer update” para fazer o download dos arquivos das bibliotecas.
-- coffeecode/router (controlador de rotas)
-- dompdf/dompdf (criação de arquivos em PDF)
-- league/plates (sistema de templates PHP nativo que é rápido, fácil de usar e fácil de estender)
+## Peres Imóveis
+
+> O objetivo geral do sistema a ser implementado, é de expandir a propaganda de propriedades, tornando de forma mais visível imóveis à venda na região, facilitando o investimento e atraindo potenciais investidores, clientes e construções, fazendo a economia local aumentar relativamente de acordo com os investidores e seus respectivos investimentos, além de dar um lar à quem procura.
+
+>São os objetivos específicos que auxiliarão no cumprimento do objetivo geral, seguindo o exemplo da loja, segue-se uma lista com:
+
+- gerenciamento do cadastros de clientes e potenciais clientes; 
+- gerenciamento do cadastros de vendedores e potenciais vendas;
+- gerenciamento do cadastros de empresas e potenciais investidores;
+- gerenciamento do cadastros de imóveis e potenciais propriedades de acordo com os seus respectivos donos;
+- controle de vendas;
+- controle de conteúdo;
+- criação e gestão de promoções on-line;
+
+## Este repositório contém:
+> back-end (90%);
+> front-end (50%);

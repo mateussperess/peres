@@ -20,11 +20,11 @@
     </div>
 
     <div class="menu-links">
-      <a href="<?= url("imoveis")?>"> Imóveis </a>
+      <a href="<?= url()?>"> Imóveis </a>
     </div>
 
     <div class="menu-logo">
-      <a href="<?= url()?>">
+      <!-- <a href="<?= url()?>"> -->
         <img src="<?= url("assets/web/images/img/logos/6.png") ?>" alt="logo">
       </a>
     </div>

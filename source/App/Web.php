@@ -5,36 +5,48 @@ namespace Source\App;
 
 use Source\Models\User;
 use League\Plates\Engine;
+use Source\Models\Category;
+use Source\Models\Propertie;
+
 
 header("Access-Control-Allow-Origin: *");
 class Web
 {
     private $view;
+    private $categories;
 
     public function __construct()
     {
-
+        $categories = new Category();
+        $this->categories = $categories->selectAll();
         $this->view = new Engine(CONF_VIEW_WEB,'php');
     }
 
     public function home() : void
     {
-        // require __DIR__ . "/../../themes/web/home.php";
+        $propertie = new Propertie();
+        $properties = $propertie->selectAll();
 
-//        $user = new User(2);
-//        $user->findById();
-        //var_dump($user);
-
-        echo $this->view->render(
-            "home",
-            []);
+        echo $this->view->render("home",
+            [
+                "categories" => $this->categories,
+                "properties" => $properties
+            ]
+        );
     }
     
-    public function imoveis() : void
+    public function properties (?array $data) : void
     {
+        if(!empty($data)){
+            $propertie = new Propertie();
+            $properties = $propertie->findByCategory($data["idCategory"]);
+        }
         echo $this->view->render(
-            "imoveis",
-            []);
+            "properties",[
+                "categories" => $this->categories,
+                "properties" => $properties
+            ]
+        );
     }
 
     public function anunciar() : void

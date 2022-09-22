@@ -15,7 +15,7 @@ $route = new Router(CONF_URL_BASE, ":");
 $route->namespace("Source\App");
 $route->get("/","Web:home");
 $route->get("/sobre","Web:about");
-$route->get("/imoveis", "Web:imoveis");
+$route->get("/imoveis", "Web:properties");
 $route->get("/anunciar", "Web:anunciar");
 
 //$route->get("/projeto","Web:project");
@@ -27,6 +27,10 @@ $route->post("/cadastrar","Web:register");
 
 $route->get("/login","Web:login");
 $route->post("/login","Web:login");
+
+
+// 
+$route->get("/imoveis/{idCategory}","Web:properties");
 
 /**
  * App Routs

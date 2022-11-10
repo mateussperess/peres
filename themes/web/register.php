@@ -19,7 +19,7 @@
       <img src="<?= url("assets/web/images/img/logos/3.png")?>" class="login__logo">
       </div>
 
-      <form id="form-user-login" class="box-inputs" novalidate>
+      <form id="form-user-register" class="box-inputs" novalidate>
         <input type="text" name="name" placeholder="Nome Completo" value="" class="inputs" id="name">
 
         <!-- <input type="date" placeholder="Data de Nascimento" value="" class="inputs" id="date"> -->
@@ -45,7 +45,7 @@
     </section>
   </main>
   <script type="text/javascript" async>
-        const form = document.querySelector("#form-user-login"); // id do formulário
+        const form = document.querySelector("#form-user-register"); // id do formulário
         const message = document.querySelector("#message"); // id da div message
         form.addEventListener("submit", async (e) => {
             e.preventDefault();

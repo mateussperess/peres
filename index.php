@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 ob_start();
 
 require __DIR__ . "/vendor/autoload.php";
@@ -38,6 +40,7 @@ $route->get("/imoveis/{idCategory}","Web:properties");
 
 $route->group("/app"); // agrupa em /app
 $route->get("/","App:home");
+$route->get("/sair","App:logout");
 $route->get("/listar","App:list");
 $route->get("/pdf","App:createPDF");
 $route->group(null); // desagrupo do /app

@@ -35,11 +35,6 @@
           <span>senha</span>
           <input type="password" name="password" id="password" class="input">
         </label>
-        <label class="login__label--checkbox">
-          <!-- <input type="checkbox" class="input--checkbox">
-          Manter login -->
-        </label>
-        <div class="wrapper">
 
         <button class="login__button" type="submit" disabled> 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -66,7 +61,7 @@
     Javascript for Login User
    -->
 
-   <script type="text/javascript" async>
+<script type="text/javascript" async>
    const inputs = document.querySelectorAll('.input');
    const button = document.querySelector('.login__button');
    const handleFocus = ({ target }) => {
@@ -90,6 +85,7 @@
   inputs.forEach((input) => input.addEventListener('focus', handleFocus));
   inputs.forEach((input) => input.addEventListener('focusout', handleFocusOut));
   inputs.forEach((input) => input.addEventListener('input', handleChange));
+
   const form = document.querySelector("#form-user");
   const message = document.querySelector("#message");
   form.addEventListener("submit", async (e) => {
@@ -99,8 +95,21 @@
       method: "POST",
       body: dataUser,
     });
+    
     const user = await data.json();
     console.log(user);
+
+    if(user) {
+      if(user.type === "success"){
+        window.location.href = "<?= url("app"); ?>";
+      } else {
+        console.log(user);
+        message.innerHTML = user.message;
+        message.classList.add("message");
+        message.classList.remove("success", "warning", "error");
+        message.classList.add(`${user.type}`);
+      }
+    }
   });
   </script>
   </body>

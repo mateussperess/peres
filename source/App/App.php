@@ -15,9 +15,9 @@ class App
 
     public function __construct()
     {
-        // if(empty($_SESSION["user"]) || empty($_COOKIE["user"])){
-        //     header("Location:http://www.localhost/peres/");
-        // }
+        if(empty($_SESSION["user"]) || empty($_COOKIE["user"])){
+            header("Location:http://www.localhost/peres/");
+        }
 
         $categories = new Category();
         $this->categories = $categories->selectAll();
@@ -38,6 +38,11 @@ class App
                 "properties" => $properties
             ]
         );
+    }
+
+    public function PropertyRegister(array $data) : void
+    {
+        // 
     }
 
     public function list () : void 

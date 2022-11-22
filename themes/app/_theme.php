@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <title> Peres Imóveis </title>
 
     <link rel="stylesheet" href="<?= url("assets/web/css/style-home.css") ?>">
 
@@ -15,7 +15,7 @@
     <nav class="navbar bg-light fixed-top">
       <div class="container-fluid">
         <img src="<?= url("assets\web")?> \images\img\logos\6.png" alt="">
-        <a class="navbar-brand" href="#">Peres Imóveis</a>
+        <a class="navbar-brand" href="<?= url("web\home")?>">Peres Imóveis</a>
         <button id="btn-menu" class="navbar-toggler position-absolute bottom-15 end-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,10 +24,10 @@
             <h5 class="offcanvas-title" id="offcanvasNavbarLabel">MENU</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item">
-                <a href="<?= url("login"); ?>"> Entrar </a>
+          <div class="offcanvas-body" id="menu-nav">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="menu-nav-list">
+              <li class="nav-item" id="nav-list-item">
+                <a href="<?= url("login"); ?>" > Entrar </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -71,13 +71,7 @@
       </div>
     </nav>
 
-      <div class="img-banner">
-        <!-- <div class="img-banner-filter"></div> -->
-        <div class="img-banner-text">
-          <span> Um lugar para chamar de lar.</span>
-        </div>
-        <div class="img-banner-logo"></div>
-      </div>
+      
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   

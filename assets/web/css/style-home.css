@@ -15,6 +15,11 @@
 
 /* nav  */
 
+div#menu-nav ul#menu-nav-list li#nav-list-item a {
+  text-decoration: none;
+  color: black;
+}
+
 nav img {
   width: 5rem;
   height: 5rem;
@@ -120,4 +125,29 @@ nav a:nth-child(2) {
     /* margin-left: 2rem; */
     font-size: 1rem;
   }
+}
+
+
+
+/* Content page */
+
+.title-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.title-home span {
+  font-size: 2rem;
+}
+
+.section-properties {
+  margin-block: 3rem;
+  height: auto;
+  
+  max-width: 90rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
 }

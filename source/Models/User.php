@@ -211,21 +211,31 @@ class User
 
     public function update()
     {
-        $query = "UPDATE users SET name = :name, email = :email, photo = :photo WHERE id = :id";
+        $query = "UPDATE users SET name = :name, email = :email, password = :password WHERE id = :id";
         $stmt = Connect::getInstance()->prepare($query);
+        $stmt->bindParam(":id",$this->id);
         $stmt->bindParam(":name",$this->name);
         $stmt->bindParam(":email",$this->email);
-        $stmt->bindParam(":photo",$this->photo);
-        $stmt->bindParam(":id",$this->id);
+        $stmt->bindParam(":password",$this->password);
         $stmt->execute();
         $arrayUser = [
             "id" => $this->id,
             "name" => $this->name,
             "email" => $this->email,
-            "photo" => $this->photo
+            "password" =>$this->password
+            // "photo" => $this->photo
         ];
         $_SESSION["user"] = $arrayUser;
         $this->message = "Usuário alterado com sucesso!";
     }
 
+    public function getArray() : array
+    {
+        return ["user" => [
+            "id" => $this->getId(),
+            "name" => $this->getName(),
+            "email" => $this->getEmail(),
+            "photo" => $this->getPassword()
+        ]];
+    }
 }

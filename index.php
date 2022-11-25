@@ -29,8 +29,8 @@ $route->post("/cadastrar","Web:register");
 $route->get("/login","Web:login");
 $route->post("/login","Web:login");
 
+//
 
-// 
 $route->get("/imoveis/{idCategory}","Web:properties");
 
 /**
@@ -40,6 +40,7 @@ $route->get("/imoveis/{idCategory}","Web:properties");
 $route->group("/app"); // agrupa em /app
 $route->get("/","App:home");
 $route->get("/sair","App:logout");
+$route->get("/perfil", "App:profile"); 
 
 $route->group(null); // desagrupo do /app
 

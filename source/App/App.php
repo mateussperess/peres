@@ -61,5 +61,13 @@ class App
         setcookie("user","Logado",time() - 3600,"/");
         header("Location:http://www.localhost/peres/");
     }
-}
+
+    public function profile(array $data) : void
+    {
+        echo $this->view->render("profile",
+            [
+                "user" => $_SESSION["user"]
+            ]);
+        }
+    }
 ?>

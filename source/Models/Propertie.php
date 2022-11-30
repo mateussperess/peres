@@ -47,18 +47,21 @@ class Propertie
     }
   }
 
-  public function selectAll()
-  {
-    $query = "SELECT * FROM properties";
-    $stmt = Connect::getInstance()->prepare($query);
-    $stmt->execute();
-
-    if($stmt->rowCount() == 0){
-      return false;
-    } else {
-      return $stmt->fetchAll();
+  public function insert() : bool
+    {
+        $query = "INSERT INTO properties (title, price, image, description, idCategory) 
+                  VALUES (:title, :price, :image, :description, :idCategory)";
+        $stmt = Connect::getInstance()->prepare($query);
+        $stmt->bindParam(":title", $this->title);
+        $stmt->bindParam(":price", $this->price);
+        $stmt->bindParam(":image", $this->image);
+        $stmt->bindParam(":description", $this->description);
+        $stmt->bindParam(":idCategory", $this->idCategory);
+        $stmt->execute();
+        $this->id = Connect::getInstance()->lastInsertId(); // armazena o id do projeto incluido
+        $this->message = "Projeto cadastrado com sucesso!";
+        return true;
     }
-  }
 
   /**
    * @return mixed

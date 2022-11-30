@@ -6,6 +6,7 @@
       {
         "name": "Mateus Peres",
         "email": "mateuslopes.ch577@adacemico.ifsul.edu.br",
+        "homepage": "https://www.ifsul.edu.br",
         "role": "Developer"
       }
     ],
@@ -24,6 +25,7 @@
     "require": {
       "dompdf/dompdf": "^2.0",
       "coffeecode/router": "1.0.8",
+      "coffeecode/uploader": "2.0.3",
       "league/plates": "v3.4.0"
     }
   }

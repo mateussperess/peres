@@ -3,7 +3,8 @@
 
 
 <?php
-$this->layout("_theme",["categories" => $categories]);
+// $this->layout("_theme",["categories" => $categories]);
+$this->layout("_theme");
 ?>
 
 <div class="img-banner">
@@ -15,49 +16,7 @@ $this->layout("_theme",["categories" => $categories]);
 </div>
 
 <div class="section-properties">
-<?php
-foreach ($properties as $propertie)
-{
-  ?>
-    <!-- <p>
-    <?= $propertie->title; ?>
-    </p> -->
 
-    <!-- <p>
-    <?= $propertie->price; ?>
-    </p> -->
-
-    <!-- <p>
-    <?= $propertie->description; ?>
-    </p> -->
-
-
-    <!-- <img src="<?= $propertie->image; ?>" alt=""> -->
-
-    <div class="card" style="width: 18rem; height: auto;">
-    <img class="card-img-top" src="<?= $propertie->image; ?>" style="height: 15rem;" alt="Card image cap">
-      <div class="card-body">
-        <p class="card-text">
-          <?= 
-          $propertie->title;
-          ?>
-        </p>
-        <p class="card-text"> R$:
-          <?=
-          $propertie->price;
-          ?>
-        </p>
-        <p>
-          <?=
-          $propertie->description;
-          ?>
-        </p>
-      </div>
-    </div>
-
-    <?php
-    }
-?>
 </div>
 
 

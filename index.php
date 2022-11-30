@@ -17,11 +17,7 @@ $route->namespace("Source\App");
 $route->get("/","Web:home");
 $route->get("/sobre","Web:about");
 $route->get("/imoveis", "Web:properties");
-$route->get("/anunciar", "Web:anunciar");
 
-//$route->get("/projeto","Web:project");
-// $route->get("/contato","Web:contact");
-// $route->post("/contato","Web:contact");
 
 $route->get("/cadastrar","Web:register");
 $route->post("/cadastrar","Web:register");
@@ -36,11 +32,18 @@ $route->get("/imoveis/{idCategory}","Web:properties");
 /**
  * App Routs
  */
-
 $route->group("/app"); // agrupa em /app
 $route->get("/","App:home");
 $route->get("/sair","App:logout");
-$route->get("/perfil", "App:profile"); 
+
+$route->get("/anunciado", "App:anuncio");
+$route->post("/anunciado", "App:anuncio");
+
+$route->get("/profile", "App:profile"); 
+$route->post("/profile", "App:profileUpdate");
+
+
+
 
 $route->group(null); // desagrupo do /app
 

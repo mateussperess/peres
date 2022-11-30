@@ -22,19 +22,27 @@ class Web
         $this->view = new Engine(CONF_VIEW_WEB,'php');
     }
 
+    // public function home() : void
+    // {
+    //     $propertie = new Propertie();
+    //     $properties = $propertie->selectAll();
+
+    //     echo $this->view->render("home",
+    //         [
+    //             "categories" => $this->categories,
+    //             "properties" => $properties
+    //         ]
+    //     );
+    // }
+    
     public function home() : void
     {
-        $propertie = new Propertie();
-        $properties = $propertie->selectAll();
-
-        echo $this->view->render("home",
-            [
-                "categories" => $this->categories,
-                "properties" => $properties
+        echo $this->view->render(
+            "home",[
+                "categories" => $this->categories
             ]
         );
     }
-    
     public function properties (?array $data) : void
     {
         if(!empty($data)){
@@ -49,18 +57,11 @@ class Web
         );
     }
 
-    public function anunciar() : void
-    {
-        echo $this->view->render(
-            "anunciar",
-            []);
-    }
 
     public function about() : void
     {
         echo $this->view->render(
-            "about",
-            ["name" => "Fábio", "age" => 46]
+            "about"
         );
 
     }

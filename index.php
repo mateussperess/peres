@@ -32,6 +32,7 @@ $route->get("/imoveis/{idCategory}","Web:properties");
 /**
  * App Routs
  */
+
 $route->group("/app"); // agrupa em /app
 $route->get("/","App:home");
 $route->get("/sair","App:logout");

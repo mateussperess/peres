@@ -27,13 +27,13 @@
           <div class="offcanvas-body" id="menu-nav">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="menu-nav-list">
               <li class="nav-item" id="nav-list-item">
-                <a href="<?= url("login"); ?>" > Entrar </a>
+                <a href="<?= url("login"); ?>" > MINHA CONTA </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a href="<?= url("sobre")?>"> Sobre </a>
+                <a href="<?= url("sobre")?>" style="color: black; text-decoration: none;"> Sobre </a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -42,36 +42,32 @@
                 <ul class="dropdown-menu">
                 <li><span class="dropdown-item" href="#"> Peres Imóveis </span></li>
                 <hr class="dropdown-divider">
+                <hr class="dropdown-divider">
                 
                 <?php
                   foreach ($categories as $category){
                 ?>
                 <li>
-                  <a class="dropdown-item active" href="<?= url("imoveis/{$category->id}"); ?>">
-                  <?= $category->type; ?>
+                  <a class="dropdown-item active" href="<?= url("imoveis/{$category->id}"); ?>" style="color:black; background-color: white; text-decoration: none;">
+                    <?= $category->type; ?>
+                  </a>
                 </a>
-              </a>
-            </li>
-            <?php
-            }
-            ?>
-                  <li><a href="<?= url()?>"> Imóveis </a></li>
-                </ul>
               </li>
+              <?php
+              }
+              ?>
+              </ul>
               <li class="nav-item">
-                <a href="<?= url("anunciar")?>"> Anuncie aqui! </a>
+                <a href="<?= url("anunciar")?>" style="color: black; text-decoration: none;"> Anuncie aqui! </a>
               </li>
-            </ul>
-            <form class="d-flex mt-3" role="search">
-              <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit"> Pesquisar </button>
-            </form>
+              <form class="d-flex mt-3" role="search">
+                <input class="form-control me-2" type="search" placeholder="Digite aqui..." aria-label="Search">
+                <button class="btn btn-outline-success" type="submit"> Pesquisar </button>
+              </form>
           </div>
         </div>
       </div>
     </nav>
-
-      
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   

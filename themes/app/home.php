@@ -16,7 +16,7 @@ $this->layout("_theme");
 </div>
 
 <div class="section-properties">
-  
+
 </div>
 
 

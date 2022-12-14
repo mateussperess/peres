@@ -1,10 +1,9 @@
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <title>Peres Imóveis</title>
 
     <link rel="stylesheet" href="<?= url("assets/web/css/style-home.css") ?>">
 
@@ -30,7 +29,7 @@
                 <a href="<?= url("login"); ?>" style="color: black; text-decoration: none;"> Entrar </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="<?= url("")?>">Home</a>
               </li>
               <li class="nav-item">
                 <a href="<?= url("sobre")?>" style="color: black; text-decoration: none;"> Sobre </a>
@@ -44,8 +43,9 @@
                   <span class="dropdown-item" href="#"> Peres Imóveis </span>
                 </li>
                 <hr class="dropdown-divider">
-                
+
                 <?php
+                // var_dump($categories);
                   foreach ($categories as $category){
                 ?>
                 <li>

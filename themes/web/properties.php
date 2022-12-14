@@ -14,20 +14,21 @@ $this->layout("_theme",["categories" => $categories]);
   <?php
   foreach ($properties as $propertie)
   {
-    ?>
+  ?>
 
   <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="<?= $propertie->image; ?>" alt="Card image cap">
       <div class="card-body">
-        <p class="card-text"><?= 
-        $propertie->title;
-        ?>
+        <p class="card-text">
+          <?=$propertie->title;?>
         </p>
       </div>
     </div>
+    
     <?php
     }
     ?>
+    
   <!-- <div class="content-properties">
     <span> imoveis </span>
   </div> -->

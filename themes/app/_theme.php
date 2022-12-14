@@ -30,7 +30,7 @@
                 <a href="<?= url("login"); ?>" > MINHA CONTA </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="<?= url("app"); ?>"> Home </a>
               </li>
               <li class="nav-item">
                 <a href="<?= url("sobre")?>" style="color: black; text-decoration: none;"> Sobre </a>
@@ -57,9 +57,15 @@
               }
               ?>
               </ul>
+
               <li class="nav-item">
-                <a href="<?= url("anunciar")?>" style="color: black; text-decoration: none;"> Anuncie aqui! </a>
+                <a href="<?= url("app/anunciado")?>" style="color: black; text-decoration: none;"> Anuncie aqui! </a>
               </li>
+
+              <li class="nav-item">
+                <a href="<?= url("app/sair")?>" style="color: black; text-decoration: none;"> Sair </a>
+              </li>
+
               <form class="d-flex mt-3" role="search">
                 <input class="form-control me-2" type="search" placeholder="Digite aqui..." aria-label="Search">
                 <button class="btn btn-outline-success" type="submit"> Pesquisar </button>
@@ -68,7 +74,7 @@
         </div>
       </div>
     </nav>
-
+ 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   
     <!-- CONTEUDO -->

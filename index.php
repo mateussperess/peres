@@ -41,9 +41,7 @@ $route->get("/anunciado", "App:anuncio");
 $route->post("/anunciado", "App:anuncio");
 
 $route->get("/profile", "App:profile"); 
-$route->post("/profile", "App:profileUpdate");
-
-
+$route->post("/profileupdate", "App:profileUpdate");
 
 
 $route->group(null); // desagrupo do /app

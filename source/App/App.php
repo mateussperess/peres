@@ -62,29 +62,33 @@ class App
     {
         $categories = new Category();
         $categoriesList = $categories->selectAll();
+        
 
         if(!empty($data)){
             $data = filter_var_array($data,FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $json = [
-                // "message" => "",
-                // "type" => "",
-                "title" => $data["title"],
-                "price" => $data["price"],
-                "image" => $data["image"],
-                "description" => $data["description"],
-                "idCategory" => $data["idCategory"]
-            ];
-
+            
+            // var_dump($data["idCategory"]);
+            
+// id = null, $title = null, $price = null, $image = null, $description = null, $idCategory = null
             $propertie = new Propertie(
                 null,
                 $data["title"],
                 $data["price"],
-                $data["image"],
+                "teste",
                 $data["description"],
                 $data["idCategory"]
             );
 
+
             $propertie->insert();
+
+            $json = [
+                "title" => $data["title"],
+                "price" => $data["price"],
+                "image" => null,
+                "description" => $data["description"],
+                "idCategory" => $data["idCategory"]
+            ];
 
             echo json_encode($json);
             return;
@@ -108,21 +112,57 @@ class App
     {
         session_destroy();
         setcookie("user","Logado",time() - 3600,"/");
-        header("Location:http://www.localhost/peres/");
+        header("Location:http://www.localhost/peres/login");
     }
 
    public function profile(array $data) : void
     {
+
+        $user = new User($_SESSION["user"]["id"]);
+        $user->findById();
+
+        // var_dump($user);
+
         echo $this->view->render("profile",
             [
                 "user" => $_SESSION["user"]
             ]);
-
     }
 
     public function profileUpdate(array $data) : void
     {
+
+        // if(!empty($data)) {
+            
+        //     if(in_array("", $data)) {
+        //         $userJson = [
+        //             "message" => "Informe todos os campos",
+        //             "type" => "alert-danger"
+        //         ];
+        //         echo json_encode($userJson);
+        //         return;
+        //     }
+
+        //     $user = new User(
+        //         $_SESSION["user"]["id"],
+        //         $data["name"],
+        //         $data["email"],
+        //         null,
+        //         null,
+        //         null,
+        //     );
+
+        //     $user->update();
+        //     $userJson = [
+        //         "message" => $user->getMessage(),
+        //         "type" => "alert-success",
+        //         "name" => $user->getName(),
+        //         "email" => $user->getEmail()
+        //     ];
+        // }
+
         if(!empty($data)){
+
             $data = filter_var_array($data,FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             if(in_array("",$data)){
                 $json = [
@@ -140,6 +180,8 @@ class App
                 echo json_encode($json);
                 return;
             }
+            /////////////////////////////////////////////////////////////////////////
+
             // se a imagem for alterada, manda a do formulário $_FILES
             // if(!empty($_FILES['photo']['tmp_name'])) {
             //     $upload = uploadImage($_FILES['photo']);
@@ -168,5 +210,5 @@ class App
             echo json_encode($json);
         }
     }
-    }
+}
 ?>

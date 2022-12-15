@@ -41,7 +41,7 @@ class Propertie
     $stmt->bindParam(":idCategory",$idCategory);
     $stmt->execute();
     if($stmt->rowCount() == 0){
-      return false;
+      return false; 
     } else {
       return $stmt->fetchAll();
     }

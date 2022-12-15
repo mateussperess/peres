@@ -15,7 +15,7 @@
     <nav class="navbar bg-light fixed-top">
       <div class="container-fluid">
         <img src="<?= url("assets\web")?> \images\img\logos\6.png" alt="">
-        <a class="navbar-brand" href="<?= url("web\home")?>">Peres Imóveis</a>
+        <a class="navbar-brand" href="<?= url("home")?>">Peres Imóveis</a>
         <button id="btn-menu" class="navbar-toggler position-absolute bottom-15 end-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,7 +27,7 @@
           <div class="offcanvas-body" id="menu-nav">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="menu-nav-list">
               <li class="nav-item" id="nav-list-item">
-                <a href="<?= url("login"); ?>" > MINHA CONTA </a>
+                <a href="<?= url("app/profile"); ?>" > Minha Conta </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="<?= url("app"); ?>"> Home </a>

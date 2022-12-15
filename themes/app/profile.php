@@ -1,6 +1,9 @@
 <?php
     $this->layout("_theme");
 ?>
+
+<link rel="stylesheet" href="<?= url("assets/app/css/style-perfil.css") ?>">
+
 <div class="container">
 <form enctype="multipart/form-data" method="post" id="formProfile">
     <div class="mb-3">
@@ -22,6 +25,9 @@
         Mensagem de Retorno!
     </div>
     <div class="mb-3">
+    <?php
+    var_dump($user);
+    ?>
     </div>
 </form>
 </div>

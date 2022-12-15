@@ -21,17 +21,17 @@
     
     <div class="mb-3">
       <label for="formFileMultiple" class="form-label">Imagens do Imóvel: </label>
-      <input name="images[]" class="form-control" type="file" id="formFileMultiple" multiple>
+      <input name="image" class="form-control" type="file" id="formFileMultiple" multiple>
     </div>
 
     <div class="mb-3">
       <label for="category" class="form-label">Categoria do Imóvel: </label>
-        <select name="category" class="form-select" aria-label="Default select example">
+        <select name="idCategory" class="form-select" aria-label="Default select example">
             <option selected>Selecione a Categoria do Imóvel: </option>
             <?php
               if(!empty($categoriesList)){
                 foreach ($categoriesList as $category){
-                    echo "<option value=\"{$category->id}\">{$category->level} - {$category->field}</option>";
+                    echo "<option value=\"{$category->id}\">{$category->type} </option>";
                 }
               }
             ?>

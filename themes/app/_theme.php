@@ -1,3 +1,9 @@
+<?php
+//use League\Plates\Engine;
+//use Source\Models\Category;
+//use Source\Models\Propertie;
+//use Source\Models\User;
+//?>
 
 <!doctype html>
 <html lang="en">
@@ -8,6 +14,8 @@
 
     <link rel="stylesheet" href="<?= url("assets/web/css/style-home.css") ?>">
 
+    <link rel="shortcut icon" href="<?= url("assets/web/images/img/logos/4.png") ?>" type="image/x-icon">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   </head>
   <body>
@@ -15,7 +23,7 @@
     <nav class="navbar bg-light fixed-top">
       <div class="container-fluid">
         <img src="<?= url("assets\web")?> \images\img\logos\6.png" alt="">
-        <a class="navbar-brand" href="<?= url("home")?>">Peres Imóveis</a>
+        <a class="navbar-brand" href="<?= url("app")?>">Peres Imóveis</a>
         <button id="btn-menu" class="navbar-toggler position-absolute bottom-15 end-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,27 +43,20 @@
               <li class="nav-item">
                 <a href="<?= url("sobre")?>" style="color: black; text-decoration: none;"> Sobre </a>
               </li>
+
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black;">
                   Filtrar
                 </a>
+
                 <ul class="dropdown-menu">
-                <li><span class="dropdown-item" href="#"> Peres Imóveis </span></li>
-                <hr class="dropdown-divider">
-                <hr class="dropdown-divider">
-                
                 <?php
-                  foreach ($categories as $category){
+                if(!empty($categoriesList)){
+                  foreach ($categoriesList as $category){
+                      echo "<option value=\"{$category->id}\"> {$category->type} </option>";
+                  }
+                }
                 ?>
-                <li>
-                  <a class="dropdown-item active" href="<?= url("imoveis/{$category->id}"); ?>" style="color:black; background-color: white; text-decoration: none;">
-                    <?= $category->type; ?>
-                  </a>
-                </a>
-              </li>
-              <?php
-              }
-              ?>
               </ul>
 
               <li class="nav-item">

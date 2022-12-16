@@ -131,38 +131,7 @@ class App
 
     public function profileUpdate(array $data) : void
     {
-
-        // if(!empty($data)) {
-            
-        //     if(in_array("", $data)) {
-        //         $userJson = [
-        //             "message" => "Informe todos os campos",
-        //             "type" => "alert-danger"
-        //         ];
-        //         echo json_encode($userJson);
-        //         return;
-        //     }
-
-        //     $user = new User(
-        //         $_SESSION["user"]["id"],
-        //         $data["name"],
-        //         $data["email"],
-        //         null,
-        //         null,
-        //         null,
-        //     );
-
-        //     $user->update();
-        //     $userJson = [
-        //         "message" => $user->getMessage(),
-        //         "type" => "alert-success",
-        //         "name" => $user->getName(),
-        //         "email" => $user->getEmail()
-        //     ];
-        // }
-
         if(!empty($data)){
-
             $data = filter_var_array($data,FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             if(in_array("",$data)){
                 $json = [
@@ -180,16 +149,6 @@ class App
                 echo json_encode($json);
                 return;
             }
-            /////////////////////////////////////////////////////////////////////////
-
-            // se a imagem for alterada, manda a do formulário $_FILES
-            // if(!empty($_FILES['photo']['tmp_name'])) {
-            //     $upload = uploadImage($_FILES['photo']);
-            //     unlink($_SESSION["user"]["photo"]);
-            // } else {
-            //     // se não houve alteração da imagem, manda a imagem que está na sessão
-            //     $upload = $_SESSION["user"]["photo"];
-            // }
 
             $user = new User(
                 $_SESSION["user"]["id"],

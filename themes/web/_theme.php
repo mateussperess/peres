@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Peres Imóveis</title>
 
-    <link rel="stylesheet" href="<?= url("assets/web/css/style-home.css") ?>">
+    <link rel="stylesheet" href="<?= url("assets/web/css/style-home.css"); ?>">
+
+    <link rel="shortcut icon" href="<?= url("assets/web/images/img/logos/6.png");?>" type="image/x-icon">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   </head>
@@ -38,14 +40,10 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black;">
                   Filtrar
                 </a>
-                <ul class="dropdown-menu">
-                <li>
-                  <span class="dropdown-item" href="#"> Peres Imóveis </span>
-                </li>
-                <hr class="dropdown-divider">
 
+                <ul class="dropdown-menu">
                 <?php
-                // var_dump($categories);
+//                var_dump($categories);
                   foreach ($categories as $category){
                 ?>
                 <li>
@@ -58,13 +56,14 @@
               }
               ?>
               </ul>
+
               <li class="nav-item">
                 <!-- <a href="<?= url("anunciar")?>" style="color: black; text-decoration: none;"> Anuncie aqui! </a> -->
               </li>
-              <form class="d-flex mt-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Digite aqui..." aria-label="Search">
-                <button class="btn btn-outline-success" type="submit"> Pesquisar </button>
-              </form>
+<!--              <form class="d-flex mt-3" role="search">-->
+<!--                <input class="form-control me-2" type="search" placeholder="Digite aqui..." aria-label="Search">-->
+<!--                <button class="btn btn-outline-success" type="submit"> Pesquisar </button>-->
+<!--              </form>-->
             </div>
           </div>
         </div>

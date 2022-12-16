@@ -20,7 +20,6 @@ class User
         return $this->message;
     }
 
-
     /**
      * @return int|null
      */
@@ -98,9 +97,6 @@ class User
         $this->password = $password;
     }
 
-    /**
-     * @return array|false
-     */
     public function selectAll ()
     {
         $query = "SELECT * FROM users";
@@ -114,9 +110,6 @@ class User
         }
     }
 
-    /**
-     * @return bool
-     */
     public function findById() : bool
     {
         $query = "SELECT * FROM users WHERE id = :id";
@@ -134,10 +127,6 @@ class User
         }
     }
 
-    /**
-     * @param string $email
-     * @return bool
-     */
     public function findByEmail(string $email) : bool
     {
         $query = "SELECT * FROM users WHERE email = :email";
@@ -151,11 +140,6 @@ class User
         }
     }
 
-    /**
-     * @param string $email
-     * @param string $password
-     * @return bool
-     */
     public function validate (string $email, string $password) : bool
     {
         $query = "SELECT * FROM users WHERE email LIKE :email";
@@ -189,14 +173,9 @@ class User
         $_SESSION["user"] = $arrayUser;
         setcookie("user","Logado",time()+60*60,"/");
 
-        // setcookie("User Logged", "true", time()*10);
-        
         return true;
     }
 
-    /**
-     * @return bool
-     */
     public function insert() : bool
     {
         $query = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
@@ -214,22 +193,19 @@ class User
         $query = "UPDATE users SET name = :name, email = :email, WHERE id = :id";
         
         $stmt = Connect::getInstance()->prepare($query);
-        // $stmt->bindParam(":id",$this->id);
+
         $stmt->bindParam(":name",$this->name);
         $stmt->bindParam(":email",$this->email);
-        // $stmt->bindParam(":password",$this->password);
 
         $stmt->execute();
         $arrayUser = [
-            // "id" => $this->id,
             "name" => $this->name,
             "email" => $this->email,
-            // "password" =>$this->password
-            // "photo" => $this->photo
         ];
 
         $_SESSION["user"] = $arrayUser;
         $this->message = "Usuário alterado com sucesso!";
+
     }
 
     public function getArray() : array

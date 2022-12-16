@@ -37,12 +37,13 @@ $route->group("/app"); // agrupa em /app
 $route->get("/","App:home");
 $route->get("/sair","App:logout");
 
+
+
 $route->get("/anunciado", "App:anuncio");
 $route->post("/anunciado", "App:anuncio");
 
 $route->get("/profile", "App:profile"); 
-$route->post("/profileupdate", "App:profileUpdate");
-
+$route->post("/profile", "App:profileUpdate");
 
 $route->group(null); // desagrupo do /app
 

@@ -5,6 +5,7 @@ namespace Source\App;
 
 use League\Plates\Engine;
 use Source\Models\Category;
+use Source\Models\CreatePropertie;
 use Source\Models\Propertie;
 use Source\Models\User;
 use CoffeeCode\Uploader\Image;
@@ -62,14 +63,9 @@ class App
     {
         $categories = new Category();
         $categoriesList = $categories->selectAll();
-        
 
         if(!empty($data)){
             $data = filter_var_array($data,FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            
-            // var_dump($data["idCategory"]);
-            
-// id = null, $title = null, $price = null, $image = null, $description = null, $idCategory = null
             $propertie = new Propertie(
                 null,
                 $data["title"],
@@ -79,18 +75,30 @@ class App
                 $data["idCategory"]
             );
 
+//            $propertie->insert();
 
-            $propertie->insert();
+            $idPropertie = $propertie->insert();
+
+            $createPropertie = new CreatePropertie(
+              NULL,
+              $idPropertie,
+              $_SESSION["user"]["id"]
+            );
+
+            $createPropertie->createPropertieInsert();
 
             $json = [
+                "id" => $propertie->getId(),
                 "title" => $data["title"],
                 "price" => $data["price"],
                 "image" => null,
                 "description" => $data["description"],
-                "idCategory" => $data["idCategory"]
+                "idCategory" => $data["idCategory"],
+                "teste" => $idPropertie,
+                "teste2" => $createPropertie->getIdUser()
             ];
 
-            echo json_encode($json);
+            echo json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
             return;
         }
         echo $this->view->render("anunciar",[
@@ -132,6 +140,7 @@ class App
     public function profileUpdate(array $data) : void
     {
         if(!empty($data)){
+
             $data = filter_var_array($data,FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             if(in_array("",$data)){
                 $json = [
@@ -158,6 +167,10 @@ class App
                 // null
                 // $upload
             );
+
+//          echo json_encode($user->getId());
+//          return;
+
             $user->update();
             $json = [
                 "message" => $user->getMessage(),

@@ -7,6 +7,7 @@ use Source\Core\Connect;
 class Propertie
 {
   private $id;
+//  private $idUser;
   private $title;
   private $price;
   private $image;
@@ -14,15 +15,6 @@ class Propertie
   private $idCategory;
   private $message;
 
-  /**
-   * @param $id
-   * @param $title
-   * @param $price
-   * @param $image
-   * @param $description
-   * @param $idCategory
-   * @param $message
-   */
   public function __construct($id = null, $title = null, $price = null, $image = null, $description = null, $idCategory = null)
   {
     $this->id = $id;
@@ -47,7 +39,7 @@ class Propertie
     }
   }
 
-  public function insert() : bool
+  public function insert()
     {
         $query = "INSERT INTO properties (title, price, image, description, idCategory) 
                   VALUES (:title, :price, :image, :description, :idCategory)";
@@ -58,9 +50,9 @@ class Propertie
         $stmt->bindParam(":description", $this->description);
         $stmt->bindParam(":idCategory", $this->idCategory);
         $stmt->execute();
-        $this->id = Connect::getInstance()->lastInsertId(); // armazena o id do projeto incluido
-        $this->message = "Projeto cadastrado com sucesso!";
-        return true;
+//        $this->id = Connect::getInstance()->lastInsertId();
+        $this->message = "Propriedade cadastrado com sucesso!";
+        return Connect::getInstance()->lastInsertId();
     }
 
   /**

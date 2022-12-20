@@ -50,13 +50,13 @@
                 </a>
 
                 <ul class="dropdown-menu">
-                <?php
-                if(!empty($categoriesList)){
-                  foreach ($categoriesList as $category){
-                      echo "<option value=\"{$category->id}\"> {$category->type} </option>";
+                  <?php
+                  if(!empty($categoriesList)){
+                    foreach ($categoriesList as $category){
+                      echo "<option value=\"{$category->id}\">{$category->type} </option>";
+                    }
                   }
-                }
-                ?>
+                  ?>
               </ul>
 
               <li class="nav-item">

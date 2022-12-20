@@ -67,7 +67,7 @@
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const dataUser = new FormData(form);
-        const data = await fetch("<?= url("app/profile"); ?>",{
+        const data = await fetch("<?= url("app/profile"); ?>", {
             method: "POST",
             body: dataUser,
         });
@@ -79,27 +79,8 @@
             message.classList.remove("alert-primary", "alert-danger");
             message.classList.add(`${user.type}`);
             setTimeout(() => {
-                message.setAttribute("style","display: none")
+                message.setAttribute("style","display: none");
             },3000);
         }
     });
-
-<!--<script type="text/javascript" async>-->
-<!--    const form = document.querySelector("#formProfile");-->
-<!--    const message = document.querySelector("#message");-->
-<!---->
-<!--    form.addEventListener("submit", async (e) => {-->
-<!--        e.preventDefault();-->
-<!--        const dataUser = new FormData(form);-->
-<!--        const data = await fetch("--><?//= url("app/profile"); ?>//",{
-//            method: "POST",
-//            body: dataUser,
-//        });
-//        const user = await data.json();
-//        if(user) {
-//            message.textContent = user.message;
-//            message.classList.remove("alert-primary", "alert-danger");
-//            message.classList.add(`${user.type}`);
-//        }
-//    });
 </script>

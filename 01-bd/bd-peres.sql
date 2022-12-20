@@ -32,13 +32,10 @@ CREATE TABLE `addresses` (
 `city` varchar(45) NOT NULL,
 `state` varchar(45) NOT NULL,
 `zipCode` varchar(45) NOT NULL,
-`idUser` int(11) NOT NULL,
 `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
 `udated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-PRIMARY KEY (`id`),
-KEY `fk_addresses_users_idx` (`idUser`),
-CONSTRAINT `fk_addresses_users` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,24 +83,24 @@ DROP TABLE IF EXISTS `properties`;
 /*!40101 SET @saved_cs_client = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `properties` (
-        `id` int(11) NOT NULL AUTO_INCREMENT,
-        `title` varchar(255) NOT NULL,
-        `price` int(100) NOT NULL,
-        `image` varchar(64000) NOT NULL,
-        `description` varchar(255) NOT NULL,
-        `idCategory` int(11) NOT NULL,
-        `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-        `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-        PRIMARY KEY (`id`),
-        KEY `fk_properties_category1_idx` (`idCategory`),
-        CONSTRAINT `fk_properties_category1` FOREIGN KEY (`idCategory`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON
-        UPDATE NO ACTION
-        ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+                            `id` int(11) NOT NULL AUTO_INCREMENT,
+                            `title` varchar(255) NOT NULL,
+                            `price` int(100) NOT NULL,
+                            `image` varchar(64000) NOT NULL,
+                            `description` varchar(255) NOT NULL,
+                            `idCategory` int(11) NOT NULL,
+                            `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+                            `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+                            PRIMARY KEY (`id`),
+                            KEY `fk_properties_category1_idx` (`idCategory`),
+                            CONSTRAINT `fk_properties_category1` FOREIGN KEY (`idCategory`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `properties`
 --
+
 
 LOCK TABLES `properties` WRITE;
 /*!40000 ALTER TABLE `properties` DISABLE KEYS */;
@@ -117,6 +114,36 @@ INSERT INTO `properties` VALUES (13,'Apartamento', 250000,
                                                     'https://images.unsplash.com/photo-1604014238312-ccb88904fa7c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
                                                         'Terreno Baldio', 3, '2022-09-08 13:31:10', NULL);
 /*!40000 ALTER TABLE `properties` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+--
+-- Table structure for table `create_propertie`
+--
+
+DROP TABLE IF EXISTS `create_propertie`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `create_propertie` (
+                                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                                  `idCategory` int(11) NOT NULL,
+                                  `idUser` int(11) NOT NULL,
+                                  PRIMARY KEY (`id`),
+                                  KEY `fk_user_create_propertie_properties1_idx` (`idCategory`),
+                                  KEY `fk_write_project_users1_idx` (`idUser`),
+                                  CONSTRAINT `fk_user_create_propertie_properties1` FOREIGN KEY (`idCategory`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+                                  CONSTRAINT `fk_create_propertie_users1` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `create_propertie`
+--
+
+LOCK TABLES `create_propertie` WRITE;
+/*!40000 ALTER TABLE `create_propertie` DISABLE KEYS */;
+INSERT INTO `create_propertie` VALUES (1,13,1),(2,13,2),(3,13,3),(4,14,1);
+/*!40000 ALTER TABLE `create_propertie` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

@@ -46,9 +46,9 @@
     <div class="mb-3">
       <button type="submit" class="btn btn-primary" name="send"> Cadastrar </button>
     </div>
-    <div class="alert alert-primary" role="alert" id="message">
-        Mensagem de Retorno!
-    </div>
+<!--    <div class="alert alert-primary" role="alert" id="message">-->
+<!--        Mensagem de Retorno!-->
+<!--    </div>-->
   </form>
 </div>
 

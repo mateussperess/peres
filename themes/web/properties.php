@@ -1,5 +1,5 @@
 <?php
-$this->layout("_theme",["categories" => $categories]);
+$this->layout("_theme",["properties" => $propertie]);
 ?>
 
 <!DOCTYPE html>

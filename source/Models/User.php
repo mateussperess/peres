@@ -210,13 +210,12 @@ class User
 
     }
 
-    public function getArray() : array
-    {
-        return ["user" => [
-            "id" => $this->getId(),
-            "name" => $this->getName(),
-            "email" => $this->getEmail(),
-            "photo" => $this->getPassword()
-        ]];
-    }
+//    public function getArray() : array
+//    {
+//      return [
+//        "id" => $this->getId(),
+//        "name" => $this->getName(),
+//        "email" => $this->getEmail()
+//      ];
+//    }
 }

@@ -43,6 +43,7 @@ class Web
             ]
         );
     }
+
     public function properties (?array $data) : void
     {
         if(!empty($data)){

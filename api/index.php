@@ -22,10 +22,17 @@ $route->put("/user/name/{name}/email/{email}", "Api:updateUser");
 $route->post("/user/name/{name}/email/{email}/password/{password}", "Api:createUser");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// rotas para os métodos da entidade principal propriedade
+// rotas para os métodos da entidade principal propriedade //
+
+// buscar propriedade
 $route->get("/propertie/id/{id}", "Api:getProperties");
 
-$route->post("/propertie/title/{title}/price/{price}/description/{description}/idCategory/{idCategory}");
+// criar propriedade
+$route->post("/propertie/id/{id}/title/{title}/price/{price}/description/{description}/idCategory/{idCategory}", "Api:createPropertie");
+
+// listar propriedades de um usuário
+
+$route->get("/propertie/user/{name}", "Api:getUserProperties");
 
 // $route->put("/user/name/{name}/email/{email}/document/{document}","Api:updateUser");
 // http://www.localhost/peres/api/user/name/Fábio/email/fabio@gmail.com/password/12345678

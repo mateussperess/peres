@@ -167,5 +167,32 @@ class Api
   public function createPropertie(array $data)
   {
 
+
+
+//    if($this->propertie->findById($data["id"])) {
+//      var_dump($data["id"]);
+//      return;
+//    }
+//
+//    echo "Não cadastrado";
+
+//    $propertie = new Propertie($data["id"]);
+//    var_dump($data);
+//    if($this->propertie->findById($data["id"])) {
+//      $response = [
+//        "code" => 400,
+//        "type" => "bad-request",
+//        "message" => "Propriedade já cadastrada!"
+//      ];
+//      echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+//      return;
+//    }
   }
+
+//  public function getUserProperties()
+//  {
+//    $propertie = new Propertie();
+//    $propertie->findBy
+////    echo "Propriedades do user!";
+//  }
 }

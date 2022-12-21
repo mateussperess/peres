@@ -73,6 +73,11 @@ class Propertie
     }
   }
 
+  public function findByIdUser()
+  {
+    $query = "SELECT * FROM properties JOIN";
+  }
+
   public function insert()
     {
         $query = "INSERT INTO properties (title, price, image, description, idCategory) 

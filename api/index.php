@@ -10,9 +10,16 @@ $route = new Router(url(),":");
 
 $route->namespace("Source\App");
 
+// rotas para os métodos de administradores
+// seleciona os usuários para id
+$route->get("/user/id/{id}", "Api:getUserAsAdm");
+
+$route->get("/user/users", "Api:getAllUsers");
+
+
 // rotas para os métodos da entidade user
 // http://www.localhost/peres/api/user
-$route->get("/user/{name}","Api:getUser");
+$route->get("/user","Api:getUser");
 
 //update de email -> passando na url os dados a serem modificados (proposta de inserir mais atributos)
 // http://www.localhost/peres/api/user/name/{name}/email/{email}
@@ -28,10 +35,9 @@ $route->post("/user/name/{name}/email/{email}/password/{password}", "Api:createU
 $route->get("/propertie/id/{id}", "Api:getProperties");
 
 // criar propriedade
-$route->post("/propertie/id/{id}/title/{title}/price/{price}/description/{description}/idCategory/{idCategory}", "Api:createPropertie");
+$route->post("/propertie/title/{title}/price/{price}/description/{description}/idCategory/{idCategory}", "Api:createPropertie");
 
 // listar propriedades de um usuário
-
 $route->get("/propertie/user/{name}", "Api:getUserProperties");
 
 // $route->put("/user/name/{name}/email/{email}/document/{document}","Api:updateUser");

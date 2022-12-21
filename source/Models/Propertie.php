@@ -80,12 +80,12 @@ class Propertie
 
   public function insert()
     {
-        $query = "INSERT INTO properties (title, price, image, description, idCategory) 
-                  VALUES (:title, :price, :image, :description, :idCategory)";
+        $query = "INSERT INTO properties (title, price, description, idCategory) 
+                  VALUES (:title, :price, :description, :idCategory)";
         $stmt = Connect::getInstance()->prepare($query);
         $stmt->bindParam(":title", $this->title);
         $stmt->bindParam(":price", $this->price);
-        $stmt->bindParam(":image", $this->image);
+//        $stmt->bindParam(":image", $this->image);
         $stmt->bindParam(":description", $this->description);
         $stmt->bindParam(":idCategory", $this->idCategory);
         $stmt->execute();

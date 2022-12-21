@@ -53,7 +53,7 @@ class Web
         echo $this->view->render(
             "properties",[
                 "categories" => $this->categories,
-                "properties" => $properties
+                "properties" => $this->properties
             ]
         );
     }

@@ -97,9 +97,9 @@ class User
         $this->password = $password;
     }
 
-    public function selectAll ()
+    public function selectAll()
     {
-        $query = "SELECT * FROM users";
+        $query = "SELECT ALL * FROM users";
         $stmt = Connect::getInstance()->prepare($query);
         $stmt->execute();
 
@@ -107,6 +107,8 @@ class User
             return false;
         } else {
             return $stmt->fetchAll();
+            echo json_encode($stmt, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            return;
         }
     }
 

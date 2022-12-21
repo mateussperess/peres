@@ -1,6 +1,6 @@
 <?php
 //use League\Plates\Engine;
-//use Source\Models\Category;
+use Source\Models\Category;
 //use Source\Models\Propertie;
 //use Source\Models\User;
 //?>
@@ -49,15 +49,21 @@
                   Filtrar
                 </a>
 
-                <ul class="dropdown-menu">
-                  <?php
-                  if(!empty($categoriesList)){
-                    foreach ($categoriesList as $category){
-                      echo "<option value=\"{$category->id}\">{$category->type} </option>";
+                  <ul class="dropdown-menu">
+                    <?php
+                    //                var_dump($categories);
+                    foreach ($categories as $category){
+                      ?>
+                        <li>
+                            <a class="dropdown-item active" href="<?= url("imoveis/{$category->id}"); ?>" style="color:black; background-color: white; text-decoration: none;">
+                              <?= $category->type; ?>
+                            </a>
+                            </a>
+                        </li>
+                      <?php
                     }
-                  }
-                  ?>
-              </ul>
+                    ?>
+                  </ul>
 
               <li class="nav-item">
                 <a href="<?= url("app/anunciado")?>" style="color: black; text-decoration: none;"> Anuncie aqui! </a>

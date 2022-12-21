@@ -106,6 +106,20 @@ class App
         ]);
     }
 
+//  public function properties (?array $data) : void
+//  {
+//    if(!empty($data)){
+//      $propertie = new Propertie();
+//      $properties = $propertie->findByCategory($data["idCategory"]);
+//    }
+//    echo $this->view->render(
+//        "properties",[
+//            "categories" => $this->categories,
+//            "properties" => $properties
+//        ]
+//    );
+//  }
+
     public function list () : void 
     {
         require __DIR__ . "/../../themes/app/list.php";

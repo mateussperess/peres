@@ -25,6 +25,10 @@ class Api
         return;
       }
 
+      if($headers["Rule"] === "A") {
+        return;
+      }
+
       if(empty($headers["Email"]) || empty($headers["Password"]) || empty($headers["Rule"])) {
         $response = [
           "code" => 400,
@@ -57,7 +61,7 @@ class Api
             "type" => "success",
             "message" => "User encontrado com sucesso!"
           ],
-          "Dados do User" => [
+          "Seus Dados" => [
             "ID" => $this->user->getId(),
             "Nome" => $this->user->getName(),
             "Email" => $this->user->getEmail()
@@ -166,33 +170,92 @@ class Api
 
   public function createPropertie(array $data)
   {
+    if($data["idCategory"] > 3) {
+      $response = [
+          "code" => 404,
+          "type" => "bad-request",
+          "message" => "Categoria não é válida!",
 
+          "Categorias Disponíveis" => [
+           "1" => "Apartamento",
+           "2" => "Casa",
+           "3" => "Terreno"
+          ]
+      ];
+      echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+      return;
+    }
 
+    $this->propertie->setTitle($data["title"]);
+    $this->propertie->setPrice($data["price"]);
+    $this->propertie->setDescription($data["description"]);
+    $this->propertie->setIdCategory($data["idCategory"]);
 
-//    if($this->propertie->findById($data["id"])) {
-//      var_dump($data["id"]);
-//      return;
-//    }
-//
-//    echo "Não cadastrado";
+    $this->propertie->insert();
 
-//    $propertie = new Propertie($data["id"]);
-//    var_dump($data);
-//    if($this->propertie->findById($data["id"])) {
-//      $response = [
-//        "code" => 400,
-//        "type" => "bad-request",
-//        "message" => "Propriedade já cadastrada!"
-//      ];
-//      echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-//      return;
-//    }
+    $response = [
+        "Retorno da Requisição" => [
+            "code" => 201,
+            "type" => "success",
+            "message" => "Propriedade cadastrada com sucesso! Confira os dados:"
+        ],
+        "Dados da Propriedade" => [
+            "Título" => $this->propertie->getTitle(),
+            "Preço" => $this->propertie->getPrice(),
+            "Descrição" => $this->propertie->getDescription(),
+            "Categoria" => $this->propertie->getIdCategory()
+        ]
+    ];
+    echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    return;
   }
 
-//  public function getUserProperties()
-//  {
-//    $propertie = new Propertie();
-//    $propertie->findBy
-////    echo "Propriedades do user!";
-//  }
+//  Adm Methods
+  public function getUserAsAdm(array $data)
+  {
+    if (!empty($data["id"])) {
+      $user = new User($data["id"]);
+
+      if (!$user->findById()) {
+        $response = [
+            "code" => 404,
+            "type" => "bad-request",
+            "message" => "User não encontrado!"
+        ];
+        echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        return;
+      }
+
+      $response = [
+          "code" => 200,
+          "type" => "success",
+          "message" => "User encontrado!",
+          "Dados do usuário" => [
+              "ID" => $user->getId(),
+              "Nome" => $user->getName(),
+              "Email" => $user->getEmail(),
+//              "Senha" => $user->getPassword()
+          ]
+      ];
+
+      echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+      return;
+
+//    echo json_encode($data);
+    }
+  }
+
+  public function getAllUsers()
+  {
+    $user = new User();
+
+    $user->selectAll();
+
+    echo json_encode($user, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+  }
+
+  public function getUserProperties()
+  {
+
+  }
 }

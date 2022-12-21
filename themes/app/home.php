@@ -1,10 +1,8 @@
 <link rel="stylesheet" href="<?= url("assets/web/css/style-home.css") ?>">
 
-
-
 <?php
-// $this->layout("_theme",["categories" => $categories]);
-$this->layout("_theme");
+//use Source\Models\Category;
+$this->layout("_theme",["categories" => $categories]);
 ?>
 
 <div class="img-banner">

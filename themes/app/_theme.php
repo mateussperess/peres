@@ -1,7 +1,7 @@
 <?php
-//use League\Plates\Engine;
+use League\Plates\Engine;
 use Source\Models\Category;
-//use Source\Models\Propertie;
+use Source\Models\Propertie;
 //use Source\Models\User;
 //?>
 
@@ -73,10 +73,10 @@ use Source\Models\Category;
                 <a href="<?= url("app/sair")?>" style="color: black; text-decoration: none;"> Sair </a>
               </li>
 
-              <form class="d-flex mt-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Digite aqui..." aria-label="Search">
-                <button class="btn btn-outline-success" type="submit"> Pesquisar </button>
-              </form>
+<!--              <form class="d-flex mt-3" role="search">-->
+<!--                <input class="form-control me-2" type="search" placeholder="Digite aqui..." aria-label="Search">-->
+<!--                <button class="btn btn-outline-success" type="submit"> Pesquisar </button>-->
+<!--              </form>-->
           </div>
         </div>
       </div>

@@ -14,6 +14,8 @@ class App
 {
 
     private $view;
+    private $categories;
+    private $properties;
 
     // public function __construct()
     // {
@@ -48,7 +50,12 @@ class App
             header("Location:http://www.localhost/peres/login");
         }
 
-        $this->view = new Engine(CONF_VIEW_APP,'php');
+      $properties = new Propertie();
+      $categories = new Category();
+
+      $this->categories = $categories->selectAll();
+      $this->properties = $properties->selectAll();
+      $this->view = new Engine(CONF_VIEW_APP,'php');
     }
 
     public function home () : void
@@ -56,7 +63,7 @@ class App
         echo "Olá, {$_SESSION["user"]["name"]}<br>";
         echo "O ID: {$_SESSION["user"]["id"]}<br>";
         echo "O email é : {$_SESSION["user"]["email"]}<br>";
-        echo $this->view->render("home");
+        echo $this->view->render("home", ["categories" => $this->categories]);
     }
     
     public function anuncio(array $data) : void

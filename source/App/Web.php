@@ -14,11 +14,14 @@ class Web
 {
     private $view;
     private $categories;
+    private $properties;
 
     public function __construct()
     {
-        $categories = new Category();
-        $this->categories = $categories->selectAll();
+        $propertie = new Propertie();
+        $this->properties = $propertie->selectAll();
+        $categorie = new Category();
+        $this->categories = $categorie->selectAll();
         $this->view = new Engine(CONF_VIEW_WEB,'php');
     }
 
@@ -39,6 +42,7 @@ class Web
     {
         echo $this->view->render(
             "home",[
+                "properties" => $this->properties,
                 "categories" => $this->categories
             ]
         );

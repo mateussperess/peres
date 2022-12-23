@@ -13,8 +13,5 @@ $this->layout("_theme",["categories" => $categories]);
   <div class="img-banner-logo"> </div>
 </div>
 
-<div class="section-properties">
-
-</div>
 
 

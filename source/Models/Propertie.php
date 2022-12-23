@@ -85,14 +85,29 @@ class Propertie
         $stmt = Connect::getInstance()->prepare($query);
         $stmt->bindParam(":title", $this->title);
         $stmt->bindParam(":price", $this->price);
+
 //        $stmt->bindParam(":image", $this->image);
         $stmt->bindParam(":description", $this->description);
         $stmt->bindParam(":idCategory", $this->idCategory);
         $stmt->execute();
+
 //        $this->id = Connect::getInstance()->lastInsertId();
         $this->message = "Propriedade cadastrado com sucesso!";
         return Connect::getInstance()->lastInsertId();
     }
+
+  public function selectAll()
+  {
+    $query = "SELECT * FROM properties";
+    $stmt = Connect::getInstance()->prepare($query);
+    $stmt->execute();
+
+    if($stmt->rowCount() == 0){
+      return false;
+    } else {
+      return $stmt->fetchAll();
+    }
+  }
 
   public function getAll()
   {

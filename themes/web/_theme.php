@@ -43,7 +43,6 @@
 
                 <ul class="dropdown-menu">
                 <?php
-//                var_dump($categories);
                   foreach ($categories as $category){
                 ?>
                 <li>
@@ -56,14 +55,6 @@
               }
               ?>
               </ul>
-
-              <li class="nav-item">
-                <!-- <a href="<?= url("anunciar")?>" style="color: black; text-decoration: none;"> Anuncie aqui! </a> -->
-              </li>
-<!--              <form class="d-flex mt-3" role="search">-->
-<!--                <input class="form-control me-2" type="search" placeholder="Digite aqui..." aria-label="Search">-->
-<!--                <button class="btn btn-outline-success" type="submit"> Pesquisar </button>-->
-<!--              </form>-->
             </div>
           </div>
         </div>

@@ -1,5 +1,7 @@
 <?php
-$this->layout("_theme",["properties" => $propertie]);
+//var_dump($properties);
+//var_dump($categories);
+$this->layout("_theme",["properties" => $properties, "categories" => $categories]);
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +17,6 @@ $this->layout("_theme",["properties" => $propertie]);
   foreach ($properties as $propertie)
   {
   ?>
-
   <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="<?= $propertie->image; ?>" alt="Card image cap">
       <div class="card-body">
@@ -24,13 +25,8 @@ $this->layout("_theme",["properties" => $propertie]);
         </p>
       </div>
     </div>
-    
     <?php
     }
     ?>
-    
-  <!-- <div class="content-properties">
-    <span> imoveis </span>
-  </div> -->
 </body>
 </html>

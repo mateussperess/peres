@@ -142,11 +142,14 @@ class User
         }
     }
 
+    //public function validate (string $email, string $password, string $type) : bool
     public function validate (string $email, string $password) : bool
     {
+        //$query = "SELECT * FROM users WHERE email LIKE :email AND type = :type";
         $query = "SELECT * FROM users WHERE email LIKE :email";
         $stmt = Connect::getInstance()->prepare($query);
         $stmt->bindParam(":email", $email);
+        //$stmt->bindParam(":type", $type);
         $stmt->execute();
 
         if($stmt->rowCount() == 0){

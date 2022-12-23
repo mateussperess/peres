@@ -39,21 +39,40 @@
     <form enctype="multipart/form-data" method="post" id="formProfile">
         <div class="mb-3">
             <label for="name" class="form-label">Nome: </label>
-
-            <?=
-            var_dump($user); // tentei usar os métodos getName e getEmail mas não sei pq diabos eles não funcionam aqui, pedir ajuda a alguém
-            ?>
-
             <input type="text" name="name" class="form-control" id="name" value="<?=$user["name"];?>" placeholder="Seu Nome...">
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email: </label>
             <input type="email" name="email" class="form-control" id="email" value="<?=$user["email"];?>" placeholder="name@example.com">
         </div>
+        <div class="mb-3">
+            <label for="photo" class="form-label">Sua Foto: </label>
+            <input class="form-control" type="file" name="photo" id="photo">
+        </div>
 
         <div class="mb-3">
             <button type="submit" class="btn btn-primary" name="send">Alterar</button>
         </div>
+
+        <div style="
+        width: 20rem;
+        height: 20rem;
+        object-fit: cover;
+        border-radius: 20rem;
+        ">
+          <?php
+          if(!empty($user["photo"])):
+            ?>
+              <img src="<?= url($user["photo"]); ?>" id="photoShow" alt="..." style="width: 100%">
+          <?php
+          else:
+            ?>
+              <img src="<?= url("assets/app/images/user-photo-null.jpg"); ?>"  id="photoShow" alt="..." style="width: 100%">
+          <?php
+          endif;
+          ?>
+        </div>
+
         <div class="alert alert-primary" style="display: none" role="alert" id="message">
             Mensagem de Retorno!
         </div>

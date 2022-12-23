@@ -8,6 +8,8 @@ use CoffeeCode\Router\Router;
 
 $route = new Router(url(),":");
 
+header("Access-Control-Allow-Origin: *");
+
 $route->namespace("Source\App");
 
 // rotas para os métodos de administradores

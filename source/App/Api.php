@@ -5,6 +5,9 @@ namespace Source\App;
 use Source\Models\Propertie;
 use Source\Models\User;
 
+// IDEAL QUE OS RETORNOS SEJAM TODOS MINUSCULOS E INGLES, SEM ACENTOS OU CARACTERES ESPECIAIS
+// A API SE TRATA DE DESENVOLVIMENTO, E NÃO DE CONSUMO DO USUÁRIO
+
 class Api
 {
     private $user;
@@ -56,16 +59,16 @@ class Api
     {
       if ($this->user->getId() != null) {
         $response = [
-          "Retorno da Requisição" => [
+          "requisition" => [
             "code" => 200,
             "type" => "success",
             "message" => "User encontrado com sucesso!"
           ],
-          "Seus Dados" => [
-            "ID" => $this->user->getId(),
-            "Nome" => $this->user->getName(),
-            "Email" => $this->user->getEmail()
-//            $this->user->getArray() -> substituí o método getArray por esse padrão de objeto em json, padronizando com os outros retornos da classe Api;
+          "user" => [
+            "id" => $this->user->getId(),
+            "name" => $this->user->getName(),
+            "email" => $this->user->getEmail(),
+            "photo" => empty($this->user->getPhoto()) ? "Sem foto..." : $this->user->getPhoto()
           ]
         ];
         echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
@@ -87,7 +90,8 @@ class Api
         ],
         "Dados alterados" => [
           "Nome" => $this->user->getName(),
-          "Email" => $this->user->getEmail()
+          "Email" => $this->user->getEmail(),
+          "Foto" => empty($this->user->getPhoto()) ? "Sem foto..." : $this->user->getPhoto()
         ]
       ];
       echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
@@ -123,8 +127,7 @@ class Api
       ],
       "Dados do Usuário" => [
         "Email" => $this->user->getEmail(),
-        "Name:" => $this->user->getName(),
-        "Password:" => $this->user->getPassword()
+        "Name:" => $this->user->getName()
       ]
     ];
     echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);

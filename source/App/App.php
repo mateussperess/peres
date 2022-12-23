@@ -180,27 +180,32 @@ class App
                 return;
             }
 
+          if(!empty($_FILES['photo']['tmp_name'])) {
+            $upload = uploadImage($_FILES['photo']);
+            //unlink($_SESSION["user"]["photo"]);
+          } else {
+            // se não houve alteração da imagem, manda a imagem que está na sessão
+            $upload = $_SESSION["user"]["photo"] ? : NULL;
+          }
+
             $user = new User(
                 $_SESSION["user"]["id"],
                 $data["name"],
                 $data["email"],
-                null
-                // null
-                // $upload
+                null,
+                $upload
             );
 
-//          echo json_encode($user->getId());
-//          return;
-
             $user->update();
-            $json = [
+            echo json_encode(
+              [
                 "message" => $user->getMessage(),
                 "type" => "alert-success",
                 "name" => $user->getName(),
-                "email" => $user->getEmail()
-                // "photo" => url($user->getPhoto())
-            ];
-            echo json_encode($json);
+                "email" => $user->getEmail(),
+                "photo" => $user->getPhoto() ? url($user->getPhoto()) : NULL
+              ]
+            );
         }
     }
 }

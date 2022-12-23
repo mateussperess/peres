@@ -6,12 +6,44 @@ use Source\Core\Connect;
 
 class User
 {
-    private $id;
-    private $name;
-    private $email;
-    private $password;
-    private $message;
+  private $id;
+  private $name;
+  private $email;
+  private $password;
+  private $photo;
+  private $message;
 
+  public function __construct(
+    int $id = null,
+    string $name = null,
+    string $email = null,
+    string $password = null,
+    string $photo = null,
+    string $message = null
+  ){
+    $this->id = $id;
+    $this->name = $name;
+    $this->email = $email;
+    $this->password = $password;
+    $this->photo = $photo;
+    $this->message = $message;
+  }
+
+  /**
+   * @return mixed
+   */
+  public function getPhoto()
+  {
+    return $this->photo;
+  }
+
+  /**
+   * @param mixed $photo
+   */
+  public function setPhoto($photo): void
+  {
+    $this->photo = $photo;
+  }
     /**
      * @return mixed
      */
@@ -84,18 +116,7 @@ class User
         $this->password = $password;
     }
 
-    public function __construct(
-        int $id = NULL,
-        string $name = NULL,
-        string $email = NULL,
-        string $password = NULL
-    )
-    {
-        $this->id = $id;
-        $this->name = $name;
-        $this->email = $email;
-        $this->password = $password;
-    }
+
 
     public function selectAll()
     {
@@ -166,13 +187,14 @@ class User
         $this->id = $user->id;
         $this->name = $user->name;
         $this->email = $user->email;
+        $this->photo = $user->photo;
         $this->message = "Usuário Autorizado, redirect to APP!";
 
         $arrayUser = [
             "id" => $this->id,
             "name" => $this->name,
             "email" => $this->email,
-            // "photo" => $this->photo
+            "photo" => $this->photo
         ];
 
         $_SESSION["user"] = $arrayUser;
@@ -195,32 +217,34 @@ class User
 
     public function update()
     {
-        $query = "UPDATE users SET name = :name, email = :email WHERE id = :id";
+        $query = "UPDATE users SET name = :name, email = :email, photo = :photo WHERE id = :id";
         
         $stmt = Connect::getInstance()->prepare($query);
 
         $stmt->bindParam(":name",$this->name);
         $stmt->bindParam(":email",$this->email);
+        $stmt->bindParam(":photo",$this->photo);
         $stmt->bindParam(":id", $this->id);
 
       $stmt->execute();
       $arrayUser = [
         "name" => $this->name,
         "email" => $this->email,
+        "photo" => $this->photo,
         "id" => $this->id
       ];
 
       $_SESSION["user"] = $arrayUser;
       $this->message = "Usuário alterado com sucesso!";
-
     }
 
-//    public function getArray() : array
-//    {
-//      return [
-//        "id" => $this->getId(),
-//        "name" => $this->getName(),
-//        "email" => $this->getEmail()
-//      ];
-//    }
+    public function getArray() : array
+    {
+      return [
+        "id" => $this->id,
+        "name" => $this->name,
+        "email" => $this->email,
+        "photo" => $this->photo
+      ];
+    }
 }

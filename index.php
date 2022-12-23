@@ -9,6 +9,8 @@ use CoffeeCode\Router\Router;
 $route = new Router(CONF_URL_BASE, ":");
 //$route = new Router('localhost/acme-tarde', ":"); // Route para localhost
 
+header("Access-Control-Allow-Origin: *");
+
 /**
  * Web Routes
  */

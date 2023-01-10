@@ -25,6 +25,10 @@ nav img {
   height: 5rem;
 }
 
+/* body {
+  background-color: #000;
+} */
+
 nav a:nth-child(2) {
   margin: 0 auto;
   text-transform: uppercase;
@@ -143,11 +147,22 @@ nav a:nth-child(2) {
 }
 
 .section-properties {
-  margin-block: 3rem;
+  margin: 0 auto;
+  /* margin-block: 3rem; */
   height: auto;
   
   max-width: 90rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   place-items: center;
+}
+
+.section-properties .card {
+  margin-block: 3rem;
+  width: 16rem;  
+  height: auto;
+}
+
+.section-properties .card-img-top {
+  height: 16rem;
 }

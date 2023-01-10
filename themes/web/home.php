@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?= url("assets/web/css/style-home.css") ?>">
+<link rel="stylesheet" href="assets/web/css/style-home.css">
 
 <?php
 // var_dump($categories);
@@ -24,23 +25,9 @@ $this->layout("_theme",["categories" => $categories]);
 foreach ($properties as $propertie)
 {
   ?>
-    <p>
-      <?= $propertie->title; ?>
-    </p>
 
-    <p>
-      <?= $propertie->price; ?>
-    </p>
-
-    <p>
-      <?= $propertie->description; ?>
-    </p>
-
-
-    <img src="<?= $propertie->image; ?>" alt="">
-
-    <div class="card" style="width: 18rem; height: auto;">
-    <img class="card-img-top" src="<?= $propertie->image; ?>" style="height: 15rem;" alt="Card image cap">
+    <div class="card">
+    <img class="card-img-top" src="<?= $propertie->image; ?>" alt="Card image cap">
       <div class="card-body">
         <p class="card-text">
           <?= 

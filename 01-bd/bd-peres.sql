@@ -170,11 +170,11 @@ UNIQUE KEY `email_UNIQUE` (`email`)
 -- Dumping data for table `users`
 --
 
-LOCK TABLES `users` WRITE;
+-- LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES 
-(1,'Fábio','fabio@gmail.com','12345678','2022-07-15 11:50:25',NULL),
-(2,'Aluno01','aluno@gmail.com','12345678','2022-07-25 11:36:46',NULL),
-(3,'Avaliador01','avaliador@gmail.com','12345678','2022-07-25 12:01:15',NULL);
+-- INSERT INTO `users` VALUES 
+-- (1,'Fábio','fabio@gmail.com','12345678','2022-07-15 11:50:25',NULL),
+-- (2,'Aluno01','aluno@gmail.com','12345678','2022-07-25 11:36:46',NULL),
+-- (3,'Avaliador01','avaliador@gmail.com','12345678','2022-07-25 12:01:15',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;

@@ -126,12 +126,12 @@ DROP TABLE IF EXISTS `create_propertie`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `create_propertie` (
                                   `id` int(11) NOT NULL AUTO_INCREMENT,
-                                  `idCategory` int(11) NOT NULL,
+                                  `idPropertie` int(11) NOT NULL,
                                   `idUser` int(11) NOT NULL,
                                   PRIMARY KEY (`id`),
-                                  KEY `fk_user_create_propertie_properties1_idx` (`idCategory`),
+                                  KEY `fk_user_create_propertie_properties1_idx` (`idPropertie`),
                                   KEY `fk_write_project_users1_idx` (`idUser`),
-                                  CONSTRAINT `fk_user_create_propertie_properties1` FOREIGN KEY (`idCategory`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+                                  CONSTRAINT `fk_user_create_propertie_properties1` FOREIGN KEY (`idPropertie`) REFERENCES `properties` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
                                   CONSTRAINT `fk_create_propertie_users1` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

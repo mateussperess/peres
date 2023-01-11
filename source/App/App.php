@@ -73,11 +73,14 @@ class App
 
         if(!empty($data)){
             $data = filter_var_array($data,FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
+            $uploadImage = uploadImage($_FILES['image']);
+
             $propertie = new Propertie(
                 null,
                 $data["title"],
                 $data["price"],
-                "teste",
+                $uploadImage,
                 $data["description"],
                 $data["idCategory"]
             );
@@ -98,7 +101,7 @@ class App
                 "id" => $propertie->getId(),
                 "title" => $data["title"],
                 "price" => $data["price"],
-                "image" => null,
+                "image" => $data["image"],
                 "description" => $data["description"],
                 "idCategory" => $data["idCategory"],
                 "teste" => $idPropertie,

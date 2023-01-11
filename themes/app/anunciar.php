@@ -9,7 +9,7 @@
 </style>
 
 <div class="container">
-<form enctype="multipart/form-data" method="post" id="formProjectRegister">
+<form enctype="multipart/form-data" method="post" id="formRegistroImovel">
     <div class="mb-3">
       <label for="title" class="form-label">Título: </label>
       <input type="text" name="title" class="form-control" id="title" placeholder="Título do Imóvel...">
@@ -20,8 +20,8 @@
     </div>
     
     <div class="mb-3">
-      <label for="formFileMultiple" class="form-label">Imagens do Imóvel: </label>
-      <input name="image" class="form-control" type="file" id="formFileMultiple" multiple>
+      <label for="image" class="form-label">Imagens do Imóvel: </label>
+      <input name="image" class="form-control" type="file" name="image" id="image" multiple>
     </div>
 
     <div class="mb-3">
@@ -46,14 +46,16 @@
     <div class="mb-3">
       <button type="submit" class="btn btn-primary" name="send"> Cadastrar </button>
     </div>
-<!--    <div class="alert alert-primary" role="alert" id="message">-->
-<!--        Mensagem de Retorno!-->
-<!--    </div>-->
+
+    <div class="alert alert-primary" role="alert" id="message">
+      Mensagem de Retorno!
+    </div>
+
   </form>
 </div>
 
 <script type="text/javascript" async>
-    const form = document.querySelector("#formProjectRegister");
+    const form = document.querySelector("#formRegistroImovel");
     const message = document.querySelector("#message");
     form.addEventListener("submit", async (e) => {
         e.preventDefault();

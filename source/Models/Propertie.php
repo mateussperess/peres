@@ -51,13 +51,15 @@ class Propertie
 
   public function getArray() : array
   {
-    return ["propertie" => [
-      "id" => $this->getId(),
-      "title" => $this->getTitle()
+    return [
+      "propertie" => [
+        "id" => $this->getId(),
+        "title" => $this->getTitle()
 //      "description" => $this->getDescription(),
 //      "price" => $this->getPrice(),
 //      "category" => $this->getIdCategory(),
-    ]];
+      ]
+    ];
   }
 
   public function findByCategory(int $idCategory)
@@ -70,6 +72,24 @@ class Propertie
       return false; 
     } else {
       return $stmt->fetchAll();
+    }
+  }
+
+  public function findByName() : bool 
+  {
+    $query = "SELECT * FROM properties WHERE title = :title";
+    $stmt = Connect::getInstance()->prepare($query);
+    $stmt->bindParam(":title", $title);
+    $stmt->execute();
+
+    if($stmt->rowCount() == 0) {
+      return false;
+    } else {
+      $propertie = $stmt->fetch();
+      $this->title = $propertie->title;
+      $this->description = $propertie->description;
+      $this->id = $propertie->idPropertie;
+      return true;
     }
   }
 
@@ -93,14 +113,14 @@ class Propertie
         $stmt->bindParam(":idCategory", $this->idCategory);
         $stmt->execute();
 
-//        $this->id = Connect::getInstance()->lastInsertId();
         $this->message = "Propriedade cadastrado com sucesso!";
-        return Connect::getInstance()->lastInsertId();
-    }
+        // return Connect::getInstance()->lastInsertId();
+        $this->setId(Connect::getInstance()->lastInsertId());
+        return true;}
 
   public function selectAll()
   {
-    $query = "SELECT * FROM properties";
+    $query = "SELECT ALL * FROM properties";
     $stmt = Connect::getInstance()->prepare($query);
     $stmt->execute();
 

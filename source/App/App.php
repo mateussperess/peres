@@ -95,6 +95,8 @@ class App
               $_SESSION["user"]["id"]
             );
 
+            // var_dump($createPropertie);
+
             $createPropertie->createPropertieInsert();
 
             $json = [

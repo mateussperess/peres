@@ -37,10 +37,14 @@ $route->post("/user/name/{name}/email/{email}/password/{password}", "Api:createU
 $route->get("/propertie/id/{id}", "Api:getProperties");
 
 // criar propriedade
-$route->post("/propertie/title/{title}/price/{price}/description/{description}/idCategory/{idCategory}", "Api:createPropertie");
+$route->post("/propertie/title/{title}/price/{price}/image/{image}/description/{description}/idCategory/{idCategory}", "Api:createPropertie");
 
 // listar propriedades de um usuário
 $route->get("/propertie/user/{name}", "Api:getUserProperties");
+
+$route->get("/properties/title/{title}", "Api:getPropertiebyName");
+
+$route->get("/properties", "Api:getAllProperties");
 
 // $route->put("/user/name/{name}/email/{email}/document/{document}","Api:updateUser");
 // http://www.localhost/peres/api/user/name/Fábio/email/fabio@gmail.com/password/12345678

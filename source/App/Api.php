@@ -4,6 +4,7 @@ namespace Source\App;
 
 use Source\Models\Propertie;
 use Source\Models\User;
+use Source\Models\CreatePropertie;
 
 // IDEAL QUE OS RETORNOS SEJAM TODOS MINUSCULOS E INGLES, SEM ACENTOS OU CARACTERES ESPECIAIS
 // A API SE TRATA DE DESENVOLVIMENTO, E NÃO DE CONSUMO DO USUÁRIO
@@ -24,9 +25,9 @@ class Api
         return;
       }
 
-      if($headers["Rule"] === "P") {
-        return;
-      }
+      // if($headers["Rule"] === "P") {
+      //   return;
+      // }
 
       if($headers["Rule"] === "A") {
         return;
@@ -62,7 +63,8 @@ class Api
           "requisition" => [
             "code" => 200,
             "type" => "success",
-            "message" => "User encontrado com sucesso!"
+            "message" => "User encontrado com sucesso!",
+            "action" => "user returned"
           ],
           "user" => [
             "id" => $this->user->getId(),
@@ -83,15 +85,16 @@ class Api
       $this->user->update();
 
       $response = [
-        "Retorno da Requisição" => [
+        "requisition" => [
           "code" => 200,
           "type" => "success",
-          "message" => "Usuário alterado com sucesso!"
+          "message" => "Usuário alterado com sucesso!",
+          "action" => "user updated"
         ],
-        "Dados alterados" => [
-          "Nome" => $this->user->getName(),
+        "user" => [
+          "Name" => $this->user->getName(),
           "Email" => $this->user->getEmail(),
-          "Foto" => empty($this->user->getPhoto()) ? "Sem foto..." : $this->user->getPhoto()
+          "Photo" => empty($this->user->getPhoto()) ? "Sem foto..." : $this->user->getPhoto()
         ]
       ];
       echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
@@ -120,12 +123,12 @@ class Api
     $this->user->insert();
 
     $response = [
-      "Retorno da Requisição" => [
+      "requisition" => [
         "code" => 201,
         "type" => "success",
-        "message" => "Usuário cadastrado com sucesso! Confira os dados:"
+        "message" => "user inserted"
       ],
-      "Dados do Usuário" => [
+      "user" => [
         "Email" => $this->user->getEmail(),
         "Name:" => $this->user->getName()
       ]
@@ -152,17 +155,18 @@ class Api
         }
 
         $response = [
-          "Retorno de Requisição" => [
+          "requisition" => [
             "code" => 200,
             "type" => "success",
             "message" => "Propriedade encontrada!",
+            "action" => "propertie founded"
           ],
-          "Atributos" => [
-            "id da propriedade" => $propertie->getId(),
-            "título da propriedade" => $propertie->getTitle(),
-            "descrição da propriedade" => $propertie->getDescription(),
-            "preço da propiedade" => $propertie->getPrice(),
-            "id da categoria da propriedade" => $propertie->getIdCategory()
+          "propertie" => [
+            "idPropertie" => $propertie->getId(),
+            "title" => $propertie->getTitle(),
+            "description" => $propertie->getDescription(),
+            "price" => $propertie->getPrice(),
+            "idCategory" => $propertie->getIdCategory()
           ]
         ];
         echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
@@ -178,6 +182,7 @@ class Api
           "code" => 404,
           "type" => "bad-request",
           "message" => "Categoria não é válida!",
+          "action" => "category not valid",
 
           "Categorias Disponíveis" => [
            "1" => "Apartamento",
@@ -185,28 +190,43 @@ class Api
            "3" => "Terreno"
           ]
       ];
+
       echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
       return;
     }
 
-    $this->propertie->setTitle($data["title"]);
-    $this->propertie->setPrice($data["price"]);
-    $this->propertie->setDescription($data["description"]);
-    $this->propertie->setIdCategory($data["idCategory"]);
+    $propertie = new Propertie();
+    $propertie->setTitle($data["title"]);
+    $propertie->setPrice($data["price"]);
+    $propertie->setImage($data["image"]);
+    $propertie->setDescription($data["description"]);
+    $propertie->setIdCategory($data["idCategory"]);
 
-    $this->propertie->insert();
+    $propertie->insert();
+
+    $createPropertie = new CreatePropertie(
+      NULL,
+      $propertie->getId(),
+      $this->user->getId()    
+    );
+
+    $createPropertie->createPropertieInsert();
 
     $response = [
-        "Retorno da Requisição" => [
+        "requisition" => [
             "code" => 201,
             "type" => "success",
-            "message" => "Propriedade cadastrada com sucesso! Confira os dados:"
+            "message" => "Propriedade cadastrada com sucesso! Confira os dados:",
+            "action" => "propertie created"
         ],
-        "Dados da Propriedade" => [
-            "Título" => $this->propertie->getTitle(),
-            "Preço" => $this->propertie->getPrice(),
-            "Descrição" => $this->propertie->getDescription(),
-            "Categoria" => $this->propertie->getIdCategory()
+        "propertie" => [
+            "title" => $propertie->getTitle(),
+            "price" => $propertie->getPrice(),
+            "image" => $propertie->getImage(),
+            "description" => $propertie->getDescription(),
+            "category" => $propertie->getIdCategory(),
+            "idUser" => $this->user->getId(),
+            "idPropertie" => $propertie->getId()
         ]
     ];
     echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
@@ -223,21 +243,25 @@ class Api
         $response = [
             "code" => 404,
             "type" => "bad-request",
-            "message" => "User não encontrado!"
+            "message" => "User não encontrado!",
+            "action" => "invalid user id"
         ];
         echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         return;
       }
 
       $response = [
+        "requisition" => [
           "code" => 200,
           "type" => "success",
           "message" => "User encontrado!",
-          "Dados do usuário" => [
-              "ID" => $user->getId(),
-              "Nome" => $user->getName(),
-              "Email" => $user->getEmail(),
-//              "Senha" => $user->getPassword()
+          "action" => "user founded"
+        ],
+        "user" => [
+          "id" => $user->getId(),
+          "Name" => $user->getName(),
+          "Email" => $user->getEmail(),
+          "Photo" => $user->getPhoto()
           ]
       ];
 
@@ -256,6 +280,47 @@ class Api
 
     echo json_encode($user, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
   }
+
+  public function getPropertiebyName(array $data) {
+
+    // echo json_encode($data);
+    // return; 
+
+    if(!empty($data["title"])) {
+      $propertie = new Propertie($data["title"]);
+
+      if(!$propertie->findByName()) {
+        $response = [
+          "code" => 404,
+          "type" => "bad-request",
+          "message" => "User não encontrado!",
+          "action" => "invalid propertie title"
+        ];
+        echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        return;
+      }
+
+      $response = [
+        "requisition" => [
+          "code" => 200,
+          "type" => "success",
+          "message" => "User encontrado!",
+          "action" => "propertie title founded"
+        ],
+        "propertie" => [
+          "title" => $propertie->getTitle(),
+          "price" => $propertie->getPrice(),
+          "image" => $propertie->getImage(),
+          "description" => $propertie->getDescription(),
+          "category" => $propertie->getIdCategory(),
+          "idUser" => $this->user->getId(),
+          "idPropertie" => $propertie->getId()
+          ]
+        ];
+        echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        return;
+      }
+    }
 
   public function getUserProperties()
   {

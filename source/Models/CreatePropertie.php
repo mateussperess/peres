@@ -7,7 +7,7 @@ use Source\Core\Connect;
 class CreatePropertie
 {
   private $id;
-  private $idCategory;
+  // private $idCategory;
   private $idUser;
   private $idPropertie;
 
@@ -55,18 +55,18 @@ class CreatePropertie
   /**
    * @return mixed
    */
-  public function getIdCategory()
-  {
-    return $this->idCategory;
-  }
+  // public function getIdCategory()
+  // {
+  //   return $this->idCategory;
+  // }
 
   /**
    * @param mixed $idCategory
    */
-  public function setIdCategory($idCategory): void
-  {
-    $this->idCategory = $idCategory;
-  }
+  // public function setIdCategory($idCategory): void
+  // {
+  //   $this->idCategory = $idCategory;
+  // }
 
   /**
    * @return mixed

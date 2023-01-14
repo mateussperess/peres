@@ -18,7 +18,6 @@ $route->get("/user/id/{id}", "Api:getUserAsAdm");
 
 $route->get("/user/users", "Api:getAllUsers");
 
-
 // rotas para os métodos da entidade user
 // http://www.localhost/peres/api/user
 $route->get("/user","Api:getUser");
@@ -40,6 +39,7 @@ $route->get("/propertie/id/{id}", "Api:getProperties");
 $route->post("/propertie/title/{title}/price/{price}/description/{description}/idCategory/{idCategory}", "Api:createPropertie");
 
 // listar propriedades de um usuário
+//buscar pelo id que retorna no método validate (construct da api)
 $route->get("/propertie/user/{name}", "Api:getUserProperties");
 
 // $route->put("/user/name/{name}/email/{email}/document/{document}","Api:updateUser");

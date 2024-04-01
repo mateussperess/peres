@@ -18,37 +18,31 @@ $this->layout("_theme",["categories" => $categories]);
   <span> Veja algumas de nossas propriedades abaixo</span>
 </div>
 
-<div class="section-properties">
-
-<?php
-// var_dump($properties);
-foreach ($properties as $propertie)
-{
-  ?>
-
-    <div class="card">
-    <img class="card-img-top" src="<?= $propertie->image; ?>" alt="Card image cap">
-      <div class="card-body">
-        <p class="card-text">
-          <?= 
-          $propertie->title;
-          ?>
-        </p>
-        <p class="card-text"> R$:
-          <?=
-          $propertie->price;
-          ?>
-        </p>
-        <p>
-          <?=
-          $propertie->description;
-          ?>
-        </p>
-      </div>
-    </div>
-    <?php
+<?php 
+    if(!empty($properties)) {
+        ?>
+        <div class="section-properties">
+            <?php
+            foreach ($properties as $propertie) {
+                ?>
+                <div class="card">
+                    <img class="card-img-top" src="<?= $propertie->image; ?>" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text">       <?= $propertie->title;          ?> </p>
+                        <p class="card-text"> R$:   <?= $propertie->price;          ?> </p>
+                        <p>                         <?= $propertie->description;    ?> </p>
+                    </div>
+                </div>
+            <?php
+            } 
+            ?>
+        </div>
+        <?php   
+    } else {
+        echo 'nao ha propriedades cadastradas';
     }
-    ?>
-</div>
+?>
+
+
 
 

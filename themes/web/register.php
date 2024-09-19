@@ -121,7 +121,7 @@
 
         if (user) {
           if (user.type === "success") {
-            window.location.href = "<?= url('/'); ?>";
+            window.location.href = "<?= url('login'); ?>";
           } else {
             message.innerHTML = user.message;
             message.classList.add("message");

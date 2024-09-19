@@ -53,16 +53,16 @@ class App
       $properties = new Propertie();
       $categories = new Category();
 
-      $this->categories = $categories->selectAll();
-      $this->properties = $properties->selectAll();
+    //   $this->categories = $categories->selectAll();
+    //   $this->properties = $properties->selectAll();
       $this->view = new Engine(CONF_VIEW_APP,'php');
     }
 
     public function home () : void
     {
-        echo "Olá, {$_SESSION["user"]["name"]}<br>";
+        echo "Olá, {$_SESSION["user"]["first_name"]}<br>";
         echo "O ID: {$_SESSION["user"]["id"]}<br>";
-        echo "O email é : {$_SESSION["user"]["email"]}<br>";
+        echo "O email é : {$_SESSION["user"]["mail"]}<br>";
         echo $this->view->render("home", ["categories" => $this->categories]);
     }
     

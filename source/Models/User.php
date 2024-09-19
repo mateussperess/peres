@@ -113,17 +113,14 @@ class User
 
     $this->id = $user->id;
     $this->first_name = $user->first_name;
-    $this->last_name = $user->last_name;
     $this->mail = $user->mail;
-    $this->profile_photo = $user->profile_photo;
+    // $this->photo = $user->photo;
     $this->message = "Usuário Autorizado, redirect to APP!";
 
     $arrayUser = [
       "id" => $this->id,
       "first_name" => $this->first_name,
-      "last_name" => $this->last_name,
       "mail" => $this->mail,
-      "profile_photo" => $this->profile_photo
     ];
 
     $_SESSION["user"] = $arrayUser;

@@ -28,7 +28,7 @@
         
         <label class="login__label">
           <span>email de usuario</span>
-          <input type="text" name="email" id="email" value="" class="input">
+          <input type="text" name="mail" id="mail" value="" class="input">
         </label>
 
         <label class="login__label">

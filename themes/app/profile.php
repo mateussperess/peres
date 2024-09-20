@@ -14,7 +14,7 @@ $this->layout("_theme");
       <div class="col-md-6">
         <h2 class="text-center">Atualizar Perfil</h2>
         <form enctype="multipart/form-data" method="post" id="formProfile" class="p-4 border rounded shadow">
-          
+
           <div class="mb-3">
             <label for="first_name" class="form-label">Nome:</label>
             <input type="text" name="first_name" class="form-control" id="first_name" value="<?= $user->getFirstName(); ?>" placeholder="Seu Nome..." required>
@@ -31,18 +31,21 @@ $this->layout("_theme");
           </div>
 
           <div class="mb-3">
+            <label for="profile_photo" class="form-label">Sua Foto: </label>
+            <input class="form-control" type="file" name="profile_photo" id="profile_photo">
+          </div>
+
+          <div class="mb-3">
             <button type="submit" class="btn btn-primary w-100">Alterar</button>
           </div>
 
-          <div class="text-center mb-3">
-            <label class="form-label">Sua Foto:</label>
-            <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin: auto;">
-              <?php if (!empty($user->getProfilePhoto())): ?>
-                <img src="<?= url($user->getProfilePhoto()); ?>" id="photoShow" alt="Foto de Perfil" style="width: 100%; height: 100%; object-fit: cover;">
-              <?php else: ?>
-                <img src="<?= url("assets/app/images/user-photo-null.jpg"); ?>" id="photoShow" alt="Foto de Perfil" style="width: 100%; height: 100%; object-fit: cover;">
-              <?php endif; ?>
-            </div>
+          <div style="
+              width: 20rem;
+              height: 20rem;
+              object-fit: cover;
+              border-radius: 20rem;
+            ">
+            <img src="<?= url($user->getProfilePhoto() ?: "assets/app/images/user-photo-null.jpg"); ?>" id="photoShow" alt="Foto de Perfil" style="width: 100%">
           </div>
 
           <div id="message" class="alert" style="display: none;"></div>
@@ -67,8 +70,8 @@ $this->layout("_theme");
       body: newUser,
     });
 
-    const response = await data.json(); 
-    console.log(response); 
+    const response = await data.json();
+    console.log(response);
 
     // Atualiza o elemento de mensagem com base na resposta
     message.textContent = response.message;
@@ -78,6 +81,10 @@ $this->layout("_theme");
     // Exibe a mensagem
     message.style.display = "block";
 
+
+    if (response.profile_photo) {
+      document.getElementById("photoShow").src = response.profile_photo;
+    }
     // Oculta a mensagem após 5 segundos
     setTimeout(() => {
       message.style.display = "none";

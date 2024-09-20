@@ -1,3 +1,14 @@
-/.idea
-/vendor
-composer.lock
+# Diretórios que não devem ser versionados
+storage/
+vendor/
+node_modules/
+
+# Arquivos de configuração sensíveis
+.env
+/01-bd/
+/storage
+
+# Outros arquivos temporários
+*.log
+uploads/
+cache/

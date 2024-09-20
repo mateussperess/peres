@@ -131,7 +131,7 @@ class User
 
   public function insert(): bool
   {
-    $query = "INSERT INTO users (first_name, last_name, mail, password) VALUES (:first_name, :last_name, :mail, :password)";
+    $query = "INSERT INTO users (first_name, last_name, mail, password, created_at) VALUES (:first_name, :last_name, :mail, :password, NOW())";
     $stmt = Connect::getInstance()->prepare($query);
     $stmt->bindParam(":first_name", $this->first_name);
     $stmt->bindParam(":last_name", $this->last_name);
@@ -144,7 +144,7 @@ class User
 
   public function update()
   {
-    $query = "UPDATE users SET first_name = :first_name, last_name = :last_name, mail = :mail WHERE id = :id";
+    $query = "UPDATE users SET first_name = :first_name, last_name = :last_name, mail = :mail, updated_at = NOW()  WHERE id = :id";
 
     $stmt = Connect::getInstance()->prepare($query);
 

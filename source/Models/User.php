@@ -144,28 +144,31 @@ class User
 
   public function update()
   {
-    $query = "UPDATE users SET first_name = :first_name, mail = :mail, profile_photo = :profile_photo WHERE id = :id";
+    $query = "UPDATE users SET first_name = :first_name, last_name = :last_name, mail = :mail WHERE id = :id";
 
     $stmt = Connect::getInstance()->prepare($query);
 
     $stmt->bindParam(":first_name", $this->first_name);
+    $stmt->bindParam(":last_name", $this->last_name);
     $stmt->bindParam(":mail", $this->mail);
-    $stmt->bindParam(":profile_photo", $this->profile_photo);
     $stmt->bindParam(":id", $this->id);
 
-    $stmt->execute();
-    $arrayUser = [
-      "first_name" => $this->first_name,
-      "mail" => $this->mail,
-      "profile_photo" => $this->profile_photo,
-      "id" => $this->id
-    ];
+    if ($stmt->execute()) {
+      $arrayUser = [
+          "first_name" => $this->first_name,
+          "last_name" => $this->last_name,
+          "mail" => $this->mail,
+          "id" => $this->id
+      ];
 
-    $_SESSION["user"] = $arrayUser;
-    $this->message = "Usuário alterado com sucesso!";
+      $_SESSION["user"] = $arrayUser;
+      return true;
+  } else {
+      return false; 
+    }
   }
 
-  public function getArray(): array
+  public function getArray($mail): array
   {
     return [
       "id" => $this->id,

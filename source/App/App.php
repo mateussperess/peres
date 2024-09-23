@@ -120,7 +120,7 @@ class App
     header("Location:http://www.localhost/peres/login");
   }
 
-  public function profile(): void
+  public function profile($id): void
   {
 
     $user = new User($_SESSION["user"]["id"]);

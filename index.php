@@ -39,7 +39,7 @@ $route->group("/app"); // agrupa em /app
 $route->get("/","App:home");
 $route->get("/sair","App:logout");
 
-$route->get("/profile", "App:profile"); 
+$route->get("/profile/{id}", "App:profile"); 
 $route->post("/profile", "App:profileUpdate");
 
 $route->get("/anunciado", "App:anuncio");

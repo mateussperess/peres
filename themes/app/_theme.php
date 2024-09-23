@@ -35,7 +35,7 @@ use Source\Models\Propertie;
           <div class="offcanvas-body" id="menu-nav">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="menu-nav-list">
               <li class="nav-item" id="nav-list-item">
-                <a href="<?= url("app/profile"); ?>" > Minha Conta </a>
+                <a href="<?= url("app/profile/{id}"); ?>" > Minha Conta </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="<?= url("app"); ?>"> Home </a>

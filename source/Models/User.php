@@ -155,16 +155,16 @@ class User
 
     if ($stmt->execute()) {
       $arrayUser = [
-          "first_name" => $this->first_name,
-          "last_name" => $this->last_name,
-          "mail" => $this->mail,
-          "id" => $this->id
+        "first_name" => $this->first_name,
+        "last_name" => $this->last_name,
+        "mail" => $this->mail,
+        "id" => $this->id
       ];
 
       $_SESSION["user"] = $arrayUser;
       return true;
-  } else {
-      return false; 
+    } else {
+      return false;
     }
   }
 
@@ -175,7 +175,6 @@ class User
       "first_name" => $this->first_name,
       "last_name" => $this->last_name,
       "mail" => $this->mail,
-      "profile_photo" => $this->profile_photo
     ];
   }
 
